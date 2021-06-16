@@ -57,8 +57,10 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         txtCommentAction = (TextView) findViewById(R.id.txtCommentViewAction);
         btnCommentAction = (Button) findViewById(R.id.btnCommentViewAction);
 
-        if(getIntent().hasExtra("peliculaID")) {
+        if(getIntent().hasExtra("movieID")) {
             verificarComentarioPrevio();
+        } else {
+            commentID = getIntent().getIntExtra("commentID", -1);
         }
     }
 
@@ -66,7 +68,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
         username = preferences.getString("usuario", null);
-        movieID = (int) getIntent().getIntExtra("peliculaID", -1);
+        movieID = getIntent().getIntExtra("movieID", -1);
 
         client.get(BEConection.URL + "verificarComentarioPrevio.php?id=" + movieID + "&user=" + username,
                 new AsyncHttpResponseHandler() {
