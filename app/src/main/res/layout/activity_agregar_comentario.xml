@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".AgregarComentarioActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:gravity="center"
         android:text="@string/AgregarComentario_editarComentario"
         android:textAlignment="center"
+        android:textColor="@color/primario_texto"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +34,8 @@
         android:ems="10"
         android:hint="@string/AgregarComentario_agregarTitulo"
         android:inputType="textPersonName"
+        android:textColor="@color/primario_texto"
+        android:textColorHint="@color/primario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCommentViewAction" />
@@ -48,6 +52,8 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textColor="@color/primario_texto"
+        android:textColorHint="@color/primario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCommentViewAddTitle" />
@@ -60,6 +66,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="32dp"
         android:text="@string/Pelicula_calificacion"
+        android:textColor="@color/primario_texto"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,8 +135,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
+        android:background="@drawable/circle_button"
         android:onClick="editComment"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/AgregarComentario_editarComentario"
+        android:textColor="@color/primario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
