@@ -139,20 +139,42 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnAccion"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/circle_button"
-        android:onClick="registrar"
-        android:text="@string/RegistroDeUsuario_registrar"
-        android:textAllCaps="false"
-        android:textColor="@color/primario_texto"
-        android:textSize="16dp"
+    <LinearLayout
+        android:id="@+id/btnLayout"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textAlignment="gravity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <Button
+            android:id="@+id/btnAccion"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/circle_button"
+            android:onClick="registrar"
+            android:text="Actualizar Perfil"
+            android:textAllCaps="false"
+            android:textColor="@color/primario_texto" />
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/circle_button"
+            android:onClick="regresar"
+            android:text="Regresar"
+            android:textAllCaps="false"
+            android:textColor="@color/primario_texto" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

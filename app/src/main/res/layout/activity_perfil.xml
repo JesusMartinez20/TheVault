@@ -8,18 +8,69 @@
     tools:context=".Perfil">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/circle_button"
+                android:onClick="regresar"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/regresar" />
+
+            <TextView
+                android:id="@+id/txtUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="@string/DatosDeUsuario_usermane"
+                android:textColor="@color/primario_texto"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"
+                app:cardBackgroundColor="@color/secundario_oscuro"
+                app:cardCornerRadius="250dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="165dp"
+                    android:layout_height="165dp"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="250dp">
+
+                    <ImageView
+                        android:id="@+id/imgAvatar"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/alien1" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/txtNombre"
@@ -77,6 +128,7 @@
                 android:id="@+id/btnLayout"
                 android:layout_width="413dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -86,10 +138,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtRegistro">
 
                 <Button
-                    android:id="@+id/btnEditar"
+                    android:id="@+id/btnEditarComentPerfil"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginRight="20sp"
                     android:background="@drawable/circle_button"
                     android:onClick="editar"
@@ -98,11 +149,9 @@
                     android:textColor="@color/primario_texto" />
 
                 <Button
-                    android:id="@+id/btnEliminar"
+                    android:id="@+id/btnEliminarComentPerfil"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20sp"
                     android:background="@drawable/circle_button"
                     android:onClick="eliminar"
                     android:text="@string/Botones_eliminar"
@@ -111,74 +160,26 @@
 
             </LinearLayout>
 
-            <ListView
-                android:id="@+id/lvComentarios"
+            <TextView
+                android:id="@+id/txtTituloComentarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="@string/Perfil_Comentarios"
+                android:textColor="@color/primario_texto"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/lyComentarios"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp" />
+                android:orientation="vertical"></LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/txtUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:text="@string/DatosDeUsuario_usermane"
-        android:textColor="@color/primario_texto"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/circle_button"
-        android:onClick="regresar"
-        android:tint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/regresar" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        app:cardBackgroundColor="@color/secundario_oscuro"
-        app:cardCornerRadius="250dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsuario">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="165dp"
-            android:layout_height="165dp"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="250dp">
-
-            <ImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/alien1" />
-
-        </androidx.cardview.widget.CardView>
-
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

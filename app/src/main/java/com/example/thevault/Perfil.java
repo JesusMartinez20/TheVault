@@ -1,15 +1,16 @@
 package com.example.thevault;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +36,7 @@ public class Perfil extends AppCompatActivity {
     private TextView txtUsuario,txtNombre,txtCorreo,txtFecha_nac,txtFecha_reg;
     private Button btnEditar,btnEliminar;
     private ImageView imgAvatar;
-    private ListView lvComentarios;
+    private LinearLayout lyComentarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,9 @@ public class Perfil extends AppCompatActivity {
         txtCorreo=(TextView)findViewById(R.id.txtCorreo);
         txtFecha_nac=(TextView)findViewById(R.id.txtFechaNac);
         txtFecha_reg=(TextView)findViewById(R.id.txtFechaReg);
-        btnEditar=(Button)findViewById(R.id.btnEditar);
-        btnEliminar=(Button)findViewById(R.id.btnEliminar);
-        lvComentarios=(ListView)findViewById(R.id.lvComentarios);
+        btnEditar=(Button)findViewById(R.id.btnEditarComentPerfil);
+        btnEliminar=(Button)findViewById(R.id.btnEliminarComentPerfil);
+        lyComentarios=(LinearLayout)findViewById(R.id.lyComentarios);
 
         SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
         usuario=preferencias.getString("usuario","usuario");
@@ -94,6 +96,85 @@ public class Perfil extends AppCompatActivity {
                             responseBody, Throwable error) {
                     }
                 });
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(BEConection.URL + "consulta_comentarios_perfil.php?username=" + usuario,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        if (statusCode == 200) {
+                            String x = new String(responseBody);
+                            if (!x.equals("0")) {
+                                try {
+                                    JSONArray jsonArray = new JSONArray(new String(responseBody));
+
+                                    for (int i = 0; i < jsonArray.length(); ++i) {
+
+                                        View comment = getLayoutInflater().inflate(R.layout.comentario_vista_perfil, null);
+                                        TextView txtNombrePelicula=(TextView)comment.findViewById(R.id.txtPeliculaCartaPerfil);
+                                        txtNombrePelicula.setText(jsonArray.getJSONObject(i).getString("nombre"));
+                                        TextView txtTituloComentario=(TextView)comment.findViewById(R.id.txtTItuloComentarioPerfil);
+                                        txtTituloComentario.setText(jsonArray.getJSONObject(i).getString("titulo"));
+                                        TextView txtCalificacion=(TextView)comment.findViewById(R.id.txtCalificacionCartaPerfil);
+                                        txtCalificacion.setText("Calificación: "+jsonArray.getJSONObject(i).getString("calificacion"));
+                                        TextView txtOpinion=(TextView)comment.findViewById(R.id.txtOpinionCartaPerfil);
+                                        txtOpinion.setText(jsonArray.getJSONObject(i).getString("opinion"));
+                                        ImageView avatar = (ImageView) comment.findViewById(R.id.imgComentarioAvatarPerfil);
+                                        Picasso.get().load(jsonArray.getJSONObject(i).getString("imagen")).into(avatar);
+                                        Button btnEditarComentario=(Button)comment.findViewById(R.id.btnEditarComentPerfil);
+                                        final String commentID=jsonArray.getJSONObject(i).getString("id");
+                                        btnEditarComentario.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent=new Intent(Perfil.this,AgregarComentarioActivity.class);
+                                                intent.putExtra("commentID",commentID);
+                                                startActivity(intent);
+                                            }
+                                        });
+
+                                        Button btnEliminarComentario=(Button)comment.findViewById(R.id.btnEliminarComentPerfil);
+                                        btnEliminarComentario.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                AlertDialog.Builder myBuild=new AlertDialog.Builder(Perfil.this);
+                                                myBuild.setMessage("¿En verdad quieres eliminar el comentario?");
+                                                myBuild.setMessage("Eliminar Comentario");
+                                                myBuild.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        ejecutarWebService(BEConection.URL + "eliminar_comentario.php?id=" +commentID , "Comentario eliminado");
+                                                        Intent intent=new Intent(Perfil.this,Perfil.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                });
+
+                                                myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        dialogInterface.cancel();
+                                                    }
+                                                });
+
+                                                AlertDialog dialog=myBuild.create();
+                                                dialog.show();
+                                            }
+                                        });
+                                        lyComentarios.addView(comment);
+                                    }
+                                } catch (JSONException e) {
+                                    Toast.makeText(Perfil.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Toast.makeText(Perfil.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     public void editar(View view){
@@ -103,10 +184,28 @@ public class Perfil extends AppCompatActivity {
     }
 
     public void eliminar(View view){
-        ejecutarWebService(BEConection.URL + "eliminar_usuario.php?username=" +usuario , "Cuenta eliminada");
-        Intent intent=new Intent(Perfil.this,Login.class);
-        startActivity(intent);
-        finish();
+        AlertDialog.Builder myBuild=new AlertDialog.Builder(this);
+        myBuild.setMessage("¿En verdad quieres eliminar tu cuenta?");
+        myBuild.setMessage("Eliminar Cuenta");
+        myBuild.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ejecutarWebService(BEConection.URL + "eliminar_usuario.php?username=" +usuario , "Cuenta eliminada");
+                Intent intent=new Intent(Perfil.this,Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog dialog=myBuild.create();
+        dialog.show();
     }
 
     private void ejecutarWebService(String url, final String msg){

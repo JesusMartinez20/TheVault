@@ -28,6 +28,9 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import cz.msebera.android.httpclient.Header;
 
 public class RegistroUsuario extends AppCompatActivity {
@@ -196,8 +199,19 @@ public class RegistroUsuario extends AppCompatActivity {
                                 "&correo=" + etCorreo.getText().toString()+
                                 "&avatar="+avatar,
                         "Perfil actualizado");
-                Intent perfil=new Intent(RegistroUsuario.this,Perfil.class);
-                startActivity(perfil);
+
+
+                TimerTask tarea = new TimerTask() {
+                    @Override
+                    public void run() {
+                        Intent perfil=new Intent(RegistroUsuario.this,Perfil.class);
+                        startActivity(perfil);
+                        finish();
+                    }//rin
+                };
+
+                Timer tiempo = new Timer();
+                tiempo.schedule(tarea, 150);
             }else{
                 Toast.makeText(RegistroUsuario.this, "Por favor, llena todos los datos", Toast.LENGTH_SHORT).show();
             }
@@ -228,5 +242,9 @@ public class RegistroUsuario extends AppCompatActivity {
         editor.putString("usuario",usuario);
         editor.putBoolean("registrado",isRegistrado);
         editor.apply();
+    }
+
+    public void regresar(View view){
+        finish();
     }
 }

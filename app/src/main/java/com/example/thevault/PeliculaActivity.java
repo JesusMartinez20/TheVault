@@ -136,15 +136,15 @@ public class PeliculaActivity extends AppCompatActivity {
 
                                     for (int i = 0; i < jsonArray.length(); ++i) {
                                         View comment = getLayoutInflater().inflate(R.layout.comentario_vista, null);
-                                        TextView titleComment = (TextView) comment.findViewById(R.id.txtCommentCardTitle);
+                                        TextView titleComment = (TextView) comment.findViewById(R.id.txtPeliculaCartaPerfil);
                                         titleComment.setText(jsonArray.getJSONObject(i).getString("titulo"));
-                                        TextView userComment = (TextView) comment.findViewById(R.id.txtCommentCardUser);
+                                        TextView userComment = (TextView) comment.findViewById(R.id.txtTItuloComentarioPerfil);
                                         userComment.setText("Usuario: " + jsonArray.getJSONObject(i).getString("usuario"));
-                                        TextView scoreComment = (TextView) comment.findViewById(R.id.txtCommentCardScore);
+                                        TextView scoreComment = (TextView) comment.findViewById(R.id.txtCalificacionCartaPerfil);
                                         scoreComment.setText("Calificación: " + jsonArray.getJSONObject(i).getString("calificacion"));
-                                        TextView opinionComment = (TextView) comment.findViewById(R.id.txtCommentCardOpinion);
+                                        TextView opinionComment = (TextView) comment.findViewById(R.id.txtOpinionCartaPerfil);
                                         opinionComment.setText(jsonArray.getJSONObject(i).getString("opinion"));
-                                        ImageView avatar = (ImageView) comment.findViewById(R.id.imgCommentCardAvatar);
+                                        ImageView avatar = (ImageView) comment.findViewById(R.id.imgComentarioAvatarPerfil);
                                         //TODO: cambiar a avatares designados.
                                         switch (jsonArray.getJSONObject(i).getInt("avatar")) {
                                             case 1:

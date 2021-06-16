@@ -5,6 +5,7 @@
     <string name="InicioDeSesion_Password">Password</string>
     <string name="InicioDeSesion_Salir">Salir</string>
 
+    <string name="Perfil_Comentarios">Comentarios</string>
     <string name="DatosDeUsuario_usermane">Username</string>
     <string name="DatosDeUsuario_nombre">Nombre</string>
     <string name="DatosDeUsuario_correo">Correo</string>
