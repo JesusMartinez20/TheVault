@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">The Vault</string>
+    <string name="DatosDeUsuario_usermane">Username</string>
+    <string name="DatosDeUsuario_nombre">Nombre</string>
+    <string name="DatosDeUsuario_correo">Correo</string>
+    <string name="DatosDeUsuario_contrasenia">Contraseña</string>
+    <string name="DatosDeUsuario_fecha">Fecha de Nacimiento</string>
+    <string name="Botones_editar">Editar</string>
+    <string name="General_calificacion">Calificación</string>
+    <string name="General_comentario">Comentario</string>
+
+    <string name="RegistroDeUsuario_registrar">Registrarse</string>
+    <string name="InicioDeSesion_iniciarSesion">Iniciar Sesión</string>
+    <string name="InicioDeSesion_registro">Registro</string>
+    <string name="VisualizacionDePelicula_direccion">Dirección</string>
+    <string name="VisualizacionDePelicula_genero">Género</string>
+    <string name="VisualizacionDePelicula_duracion">Duración</string>
+    <string name="VisualizacionDePelicula_anio">Año</string>
+    <string name="VisualizacionDePelicula_pais">País</string>
+
+    <string name="VisualizacionDePelicula_reparto">Reparto</string>
+    <string name="VisualizacionDePelicula_comentarios">Comentarios</string>
+    <string name="VisualizacionDePelicula_agregar">Agregar Comentario</string>
+    <string name="AgregarModificarComentario_encabezado">Agregar comentario</string>
+    <string name="AgregarModificarComentario_agregarTitulo">Agregar titulo</string>
+    <string name="AgregarModificarComentario_agregarOpinion">Agregar opinión</string>
+
+    <string name="AgregarModificarComentario_publicar">Publicar</string>
+    <string name="FichaTecnicaStaff_nacionalidad">Nacionalidad</string>
+    <string name="FichaTecnicaStaff_sexo">Sexo</string>
+    <string name="PerfilDeUsario_tarjetaComentario">Película</string>
+    <string name="EdicionPerfilDeUsario_cambios">Confirmar cambios</string>
+    <string name="Menu_perfil">Perfil</string>
+    <string name="Menu_cerrarSesion">Cerrar Sesión</string>
+
 </resources>
