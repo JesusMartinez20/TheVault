@@ -10,7 +10,9 @@
     <string name="DatosDeUsuario_correo">Correo</string>
     <string name="DatosDeUsuario_contrasenia">Contraseña</string>
     <string name="DatosDeUsuario_fecha">Fecha de Nacimiento</string>
+    <string name="DatosDeUsuario_fecha_reg">Fecha de Registro</string>
     <string name="Botones_editar">Editar</string>
+    <string name="Botones_eliminar">Eliminar</string>
     <string name="General_calificacion">Calificación</string>
     <string name="General_comentario">Comentario</string>
 

@@ -71,7 +71,7 @@
         android:id="@+id/btnLayout"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:textAlignment="gravity"
@@ -81,23 +81,27 @@
 
         <Button
             android:id="@+id/btnIngresar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20sp"
+            android:background="@drawable/circle_button"
             android:onClick="ingresarFeed"
             android:text="@string/InicioDeSesion_iniciarSesion"
-            android:textAllCaps="true" />
+            android:textAllCaps="false"
+            android:textColor="@color/primario_texto" />
 
         <Button
             android:id="@+id/btnSalir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20sp"
+            android:background="@drawable/circle_button"
             android:onClick="salirApp"
             android:text="@string/InicioDeSesion_Salir"
-            android:textAllCaps="true" />
+            android:textAllCaps="false"
+            android:textColor="@color/primario_texto" />
     </LinearLayout>
 
     <TextView

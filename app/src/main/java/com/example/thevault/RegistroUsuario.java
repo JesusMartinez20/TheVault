@@ -80,7 +80,7 @@ public class RegistroUsuario extends AppCompatActivity {
         }
 
         if(tipo==1){
-            btnAccion.setText("Actualizar perfil");
+            btnAccion.setText("Actualizar Perfil");
             etUsuario.setEnabled(false);
             SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
             usuario=preferencias.getString("usuario","usuario");
@@ -167,7 +167,6 @@ public class RegistroUsuario extends AppCompatActivity {
                                                         "&correo=" + etCorreo.getText().toString()+
                                                         "&avatar="+avatar,
                                                 "Cuenta creada");
-                                        limpiarCampos();
                                         guardarPreferencias(etUsuario.getText().toString(),true);
                                         Intent login=new Intent(RegistroUsuario.this,Feed.class);
                                         startActivity(login);
@@ -197,10 +196,8 @@ public class RegistroUsuario extends AppCompatActivity {
                                 "&correo=" + etCorreo.getText().toString()+
                                 "&avatar="+avatar,
                         "Perfil actualizado");
-                limpiarCampos();
                 Intent perfil=new Intent(RegistroUsuario.this,Perfil.class);
                 startActivity(perfil);
-                limpiarCampos();
             }else{
                 Toast.makeText(RegistroUsuario.this, "Por favor, llena todos los datos", Toast.LENGTH_SHORT).show();
             }
@@ -224,13 +221,6 @@ public class RegistroUsuario extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void limpiarCampos(){
-        etNombre.setText("");
-        etUsuario.setText("");
-        etCorreo.setText("");
-        etPassword.setText("");
-        txtFecha.setText("");
-    }
 
     private void guardarPreferencias(String usuario,boolean isRegistrado){
         SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
