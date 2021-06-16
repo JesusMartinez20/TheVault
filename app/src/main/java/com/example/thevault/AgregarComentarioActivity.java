@@ -68,7 +68,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         username = preferences.getString("usuario", null);
         movieID = (int) getIntent().getIntExtra("peliculaID", -1);
 
-        client.get("http://192.168.1.80:80/4to/thevault-be/verificarComentarioPrevio.php?id=" + movieID + "&user=" + username,
+        client.get(BEConection.URL + "verificarComentarioPrevio.php?id=" + movieID + "&user=" + username,
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -165,13 +165,13 @@ public class AgregarComentarioActivity extends AppCompatActivity {
     }
 
     public void addComment(View view) {
-        ejecuarWebService("http://192.168.1.80/4to/thevault-be/insertarComentario.php",
+        ejecuarWebService(BEConection.URL + "insertarComentario.php",
                 "Comentario registrado", Request.Method.POST);
         clearFields();
     }
 
     public void editComment(View view) {
-        ejecuarWebService("http://192.168.1.80/4to/thevault-be/editarComentario.php",
+        ejecuarWebService(BEConection.URL + "editarComentario.php",
                 "Comentario editado", Request.Method.PUT);
         clearFields();
     }

@@ -53,7 +53,7 @@ public class PeliculaActivity extends AppCompatActivity {
     private void putInfo() {
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get("http://192.168.1.80:80/4to/thevault-be/consultarPelicula.php?id=" + movieID,
+        client.get(BEConection.URL + "consultarPelicula.php?id=" + movieID,
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -92,11 +92,12 @@ public class PeliculaActivity extends AppCompatActivity {
                                             staffData.setText(staffArray.getJSONObject(i).getString("nombre") + " - " + staffArray.getJSONObject(i).getString("rol"));
                                             staffView.setId(staffArray.getJSONObject(i).getInt("staff_id"));
 
-                                            //TODO: cambiar método para que redirija a la vista de staff
                                             staffView.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    Toast.makeText(PeliculaActivity.this, "ID: " + staffView.getId(), Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(PeliculaActivity.this, Staff.class);
+                                                    intent.putExtra("staffID", staffView.getId());
+                                                    startActivity(intent);
                                                 }
                                             });
 
@@ -123,7 +124,7 @@ public class PeliculaActivity extends AppCompatActivity {
     private void getComments() {
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get("http://192.168.1.80:80/4to/thevault-be/consultarComentariosPelicula.php?id=" + movieID,
+        client.get(BEConection.URL + "consultarComentariosPelicula.php?id=" + movieID,
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
