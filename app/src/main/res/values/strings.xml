@@ -38,4 +38,17 @@
     <string name="Menu_perfil">Perfil</string>
     <string name="Menu_cerrarSesion">Cerrar Sesión</string>
 
+    <string name="Pelicula_direccion">Dirección</string>
+    <string name="Pelicula_premios">Premios</string>
+    <string name="Pelicula_duracion">Duración</string>
+    <string name="Pelicula_año">Año</string>
+    <string name="Pelicula_pais">País</string>
+    <string name="Pelicula_calificacion">Calificación</string>
+    <string name="Pelicula_reparto">Reparto</string>
+    <string name="Pelicula_comentar">Comentar</string>
+    <string name="Pelicula_comentarios">Comentarios</string>
+
+    <string name="AgregarComentario_agregarComentario">Agregar comentario</string>
+    <string name="AgregarComentario_editarComentario">Editar comentario</string>
+    <string name="AgregarComentario_agregarTitulo">Agregar título</string>
 </resources>
