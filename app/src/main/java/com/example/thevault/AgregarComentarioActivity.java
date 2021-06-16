@@ -61,6 +61,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
             verificarComentarioPrevio();
         } else {
             commentID = getIntent().getIntExtra("commentID", -1);
+            Toast.makeText(this, ""+commentID, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -68,7 +69,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
         username = preferences.getString("usuario", null);
-        movieID = getIntent().getIntExtra("movieID", -1);
+        movieID = getIntent().getIntExtra("peliculaID", -1);
 
         client.get(BEConection.URL + "verificarComentarioPrevio.php?id=" + movieID + "&user=" + username,
                 new AsyncHttpResponseHandler() {

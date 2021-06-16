@@ -123,15 +123,18 @@ public class Perfil extends AppCompatActivity {
                                         ImageView avatar = (ImageView) comment.findViewById(R.id.imgComentarioAvatarPerfil);
                                         Picasso.get().load(jsonArray.getJSONObject(i).getString("imagen")).into(avatar);
                                         Button btnEditarComentario=(Button)comment.findViewById(R.id.btnEditarComentPerfil);
-                                        final String commentID=jsonArray.getJSONObject(i).getString("id");
+                                        final int commentID=jsonArray.getJSONObject(i).getInt("id");
                                         btnEditarComentario.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
                                                 Intent intent=new Intent(Perfil.this,AgregarComentarioActivity.class);
                                                 intent.putExtra("commentID",commentID);
+                                                Toast.makeText(Perfil.this, ""+intent.getIntExtra("commentID",-1), Toast.LENGTH_SHORT).show();
                                                 startActivity(intent);
                                             }
                                         });
+
+
 
                                         Button btnEliminarComentario=(Button)comment.findViewById(R.id.btnEliminarComentPerfil);
                                         btnEliminarComentario.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +164,7 @@ public class Perfil extends AppCompatActivity {
                                                 dialog.show();
                                             }
                                         });
+
                                         lyComentarios.addView(comment);
                                     }
                                 } catch (JSONException e) {
