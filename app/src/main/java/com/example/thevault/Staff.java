@@ -26,7 +26,8 @@ public class Staff extends AppCompatActivity {
         nacimiento=(TextView)findViewById(R.id.nacimiento);
         sexo=(TextView)findViewById(R.id.sexo);
 
-        int id=1;
+
+        int id = getIntent().getIntExtra("staffID", -1);
 
         AsyncHttpClient cliente = new AsyncHttpClient();
         cliente.get(BEConection.URL + "staff.php?id=" +id,
