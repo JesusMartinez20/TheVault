@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".PeliculaActivity">
 
     <ScrollView
@@ -19,9 +20,9 @@
                 android:id="@+id/imgMoviePoster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:maxHeight="300dp"
-                tools:srcCompat="@tools:sample/backgrounds/scenic"
-                android:adjustViewBounds="true" />
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/txtMovieTitle"
@@ -33,6 +34,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
                 android:text="TextView"
+                android:textColor="@color/primario_texto"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -52,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_direccion"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -60,6 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_premios"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </TableRow>
@@ -74,13 +78,15 @@
                         android:id="@+id/txtMovieDirector"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="35" />
+                        android:layout_weight="35"
+                        android:textColor="@color/primario_texto" />
 
                     <TextView
                         android:id="@+id/txtMovieAwards"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="65" />
+                        android:layout_weight="65"
+                        android:textColor="@color/primario_texto" />
                 </TableRow>
 
                 <TableRow
@@ -93,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_duracion"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -101,6 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_año"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -116,13 +124,15 @@
                         android:id="@+id/txtMovieLength"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="35" />
+                        android:layout_weight="35"
+                        android:textColor="@color/primario_texto" />
 
                     <TextView
                         android:id="@+id/txtMoviePremiere"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="65" />
+                        android:layout_weight="65"
+                        android:textColor="@color/primario_texto" />
 
                 </TableRow>
 
@@ -136,6 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_pais"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -144,6 +155,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_calificacion"
+                        android:textColor="@color/primario_texto"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </TableRow>
@@ -158,13 +170,15 @@
                         android:id="@+id/txtMovieCountry"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="35" />
+                        android:layout_weight="35"
+                        android:textColor="@color/primario_texto" />
 
                     <TextView
                         android:id="@+id/txtMovieScore"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="65" />
+                        android:layout_weight="65"
+                        android:textColor="@color/primario_texto" />
                 </TableRow>
             </TableLayout>
 
@@ -174,6 +188,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/Pelicula_reparto"
+                android:textColor="@color/primario_texto"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -190,6 +205,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/Pelicula_comentarios"
+                android:textColor="@color/primario_texto"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -197,6 +213,10 @@
                 android:id="@+id/btnMovieAddComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/circle_button"
                 android:onClick="goToCommentView"
                 android:text="@string/Pelicula_comentar"
