@@ -197,8 +197,10 @@
                 android:id="@+id/btnMovieAddComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/circle_button"
                 android:onClick="goToCommentView"
-                android:text="@string/Pelicula_comentar" />
+                android:text="@string/Pelicula_comentar"
+                android:textColor="@color/primario_texto" />
 
             <LinearLayout
                 android:id="@+id/layoutMovieComments"
