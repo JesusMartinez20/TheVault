@@ -57,7 +57,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         txtCommentAction = (TextView) findViewById(R.id.txtCommentViewAction);
         btnCommentAction = (Button) findViewById(R.id.btnCommentViewAction);
 
-        if(getIntent().hasExtra("movieID")) {
+        if(getIntent().hasExtra("peliculaID")) {
             verificarComentarioPrevio();
         } else {
             commentID = getIntent().getIntExtra("commentID", -1);
