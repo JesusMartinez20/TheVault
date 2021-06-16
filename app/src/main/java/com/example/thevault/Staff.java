@@ -3,11 +3,13 @@ package com.example.thevault;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,11 +22,13 @@ public class Staff extends AppCompatActivity {
         setContentView(R.layout.activity_staff);
 
         final TextView nombre, nacionalidad, sexo, nacimiento;
+        final ImageView imagen;
 
         nombre=(TextView)findViewById(R.id.nombre);
         nacionalidad=(TextView)findViewById(R.id.nacionalidad);
         nacimiento=(TextView)findViewById(R.id.nacimiento);
         sexo=(TextView)findViewById(R.id.sexo);
+        imagen=findViewById(R.id.imagen);
 
 
         int id = getIntent().getIntExtra("staffID", -1);
@@ -44,6 +48,7 @@ public class Staff extends AppCompatActivity {
                                     nacionalidad.setText("País de origen: "+ contacto.getJSONObject(0).getString("nacinalidad"));
                                     nacimiento.setText("Fecha de nacimiento: "+contacto.getJSONObject(0).getString("fecha_nacimiento"));
                                     sexo.setText("Sexo: "+contacto.getJSONObject(0).getString("sexo"));
+                                    Picasso.get().load(contacto.getJSONObject(0).getString("imagen")).into(imagen);
                                 } else{
                                     Toast.makeText(Staff.this, "Persona no encontrada.", Toast.LENGTH_SHORT).show();
                                 }

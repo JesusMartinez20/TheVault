@@ -4,41 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primario_oscuro"
     tools:context=".Staff">
+
+    <ImageView
+        android:id="@+id/imagen"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:paddingBottom="30dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:radius="11dp"
+        />
 
     <TextView
         android:id="@+id/nombre"
         android:layout_width="312dp"
         android:layout_height="50dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="0dp"
         android:text="TextView"
+        android:textColor="#eeeeee"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sexo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nacimiento" />
-
-    <TextView
-        android:id="@+id/nacionalidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+        app:layout_constraintTop_toBottomOf="@id/imagen" />
 
     <TextView
         android:id="@+id/nacimiento"
@@ -46,9 +39,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:text="TextView"
+        android:textColor="#eeeeee"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nacionalidad" />
+
+    <TextView
+        android:id="@+id/nacionalidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        android:textColor="#eeeeee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+    <TextView
+        android:id="@+id/sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
+        android:textColor="#eeeeee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nacimiento" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

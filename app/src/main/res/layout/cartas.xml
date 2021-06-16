@@ -37,19 +37,23 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Pulp fiction" />
+                    android:fontFamily="sans-serif-black"
+                    android:text="Pulp fiction"
+                    android:textColor="#eeeeee"
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/awardIcon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:srcCompat="@drawable/comment" />
+                    app:srcCompat="@drawable/award" />
 
                 <TextView
                     android:id="@+id/numPremios"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".3"
+                    android:textColor="#eeeeee"
                     android:text="5" />
             </LinearLayout>
 
@@ -63,6 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
+                    android:textColor="#eeeeee"
                     android:text="180 min" />
 
                 <ImageView
@@ -76,6 +81,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight=".3"
+                    android:textColor="#eeeeee"
                     android:text="5" />
             </LinearLayout>
 
@@ -89,6 +95,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
+                    android:textColor="#eeeeee"
                     android:text="1990" />
             </LinearLayout>
         </LinearLayout>
