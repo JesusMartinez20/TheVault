@@ -15,6 +15,7 @@
     <string name="General_comentario">Comentario</string>
 
     <string name="RegistroDeUsuario_registrar">Registrarse</string>
+    <string name="RegistroDeUsuario_avatar">Selecciona un avatar</string>
     <string name="InicioDeSesion_iniciarSesion">Iniciar Sesión</string>
     <string name="InicioDeSesion_registro">¿No tienes cuenta?, regístrate</string>
     <string name="VisualizacionDePelicula_direccion">Dirección</string>

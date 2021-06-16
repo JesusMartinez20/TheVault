@@ -78,8 +78,8 @@ public class Feed extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.perfil:
-                //Intent perfil = new Intent(this,Perfil.class);
-                //startActivity(perfil);
+                Intent perfil = new Intent(this,Perfil.class);
+                startActivity(perfil);
                 break;
             case R.id.cerrarSesion:
                 cerrarSesion();

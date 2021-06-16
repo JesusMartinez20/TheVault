@@ -44,6 +44,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Login.this,RegistroUsuario.class);
+                intent.putExtra("tipo",0);
                 startActivity(intent);
             }
         });
@@ -63,23 +64,6 @@ public class Login extends AppCompatActivity {
 
     public void salirApp(View view){
         finish();
-    }
-
-    private void ejecutarWebService(String url, final String msg){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new
-                Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(Login.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Login.this, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
     }
 
     private void iniciarSesion(final String username, final String password){

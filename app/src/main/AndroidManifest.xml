@@ -13,12 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Staff"></activity>
-        <activity android:name=".Feed" />
-        <activity android:name=".AgregarComentarioActivity"></activity>
-        <activity android:name=".PeliculaActivity" />
-        <activity android:name=".Login" />
+        <activity android:name=".Perfil"></activity>
         <activity android:name=".Staff" />
+        <activity android:name=".Feed" />
+        <activity android:name=".AgregarComentarioActivity" />
+        <activity android:name=".PeliculaActivity" />
+        <activity android:name=".RegistroUsuario" />
+        <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
