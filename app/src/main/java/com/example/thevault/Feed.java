@@ -94,10 +94,10 @@ public class Feed extends AppCompatActivity {
         SharedPreferences.Editor editor = preferencias.edit();
         editor.clear();
         editor.apply();
-        /*Intent logout = new Intent(this,Login.class);
+        Intent logout = new Intent(this,Login.class);
         logout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(logout);*/
+        startActivity(logout);
         finish();
     }
 }

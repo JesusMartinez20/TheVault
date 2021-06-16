@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">The Vault</string>
+    <string name="Cargando">Cargando...</string>
+    <string name="InicioDeSesion_Guardar">Mantener sesión iniciada</string>
+    <string name="InicioDeSesion_Password">Password</string>
+    <string name="InicioDeSesion_Salir">Salir</string>
+
     <string name="DatosDeUsuario_usermane">Username</string>
     <string name="DatosDeUsuario_nombre">Nombre</string>
     <string name="DatosDeUsuario_correo">Correo</string>
@@ -11,7 +16,7 @@
 
     <string name="RegistroDeUsuario_registrar">Registrarse</string>
     <string name="InicioDeSesion_iniciarSesion">Iniciar Sesión</string>
-    <string name="InicioDeSesion_registro">Registro</string>
+    <string name="InicioDeSesion_registro">¿No tienes cuenta?, regístrate</string>
     <string name="VisualizacionDePelicula_direccion">Dirección</string>
     <string name="VisualizacionDePelicula_genero">Género</string>
     <string name="VisualizacionDePelicula_duracion">Duración</string>

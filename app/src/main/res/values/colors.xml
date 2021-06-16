@@ -3,4 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="primario">#666a91</color>
+    <color name="primario_claro">#9598c1</color>
+    <color name="primario_oscuro">#3a3f63</color>
+    <color name="primario_texto">#ffffff</color>
+    <color name="secundario">#f25e5e</color>
+    <color name="secundario_claro">#ff908b</color>
+    <color name="secundario_oscuro">#ba2934</color>
+    <color name="secundario_texto">#000000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>
