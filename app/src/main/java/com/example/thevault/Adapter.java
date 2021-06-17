@@ -45,7 +45,7 @@ public class Adapter extends BaseAdapter {
 
         nombre.setText(arreglo.get(i).nombre);
         duracion.setText(arreglo.get(i).duracion + " min");
-        año.setText("Año: "+arreglo.get(i).año);
+        año.setText(arreglo.get(i).año);
         numComentarios.setText(arreglo.get(i).comentarios);
         numPremios.setText(arreglo.get(i).premios);
         Picasso.get().load(arreglo.get(i).imagen).into(imagen);

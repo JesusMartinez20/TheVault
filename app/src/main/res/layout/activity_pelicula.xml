@@ -53,6 +53,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_direccion"
                         android:textColor="@color/primario_texto"
@@ -62,6 +63,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_premios"
                         android:textColor="@color/primario_texto"
@@ -72,7 +74,7 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginBottom="20dp"
                     android:weightSum="100">
 
                     <TextView
@@ -98,6 +100,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_duracion"
                         android:textColor="@color/primario_texto"
@@ -107,6 +110,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_año"
                         android:textColor="@color/primario_texto"
@@ -145,6 +149,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="35"
                         android:text="@string/Pelicula_pais"
                         android:textColor="@color/primario_texto"
@@ -154,6 +159,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="65"
                         android:text="@string/Pelicula_calificacion"
                         android:textColor="@color/primario_texto"
@@ -186,6 +192,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/Pelicula_reparto"
