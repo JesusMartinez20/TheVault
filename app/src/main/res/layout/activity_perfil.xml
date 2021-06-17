@@ -65,8 +65,9 @@
                         android:id="@+id/imgAvatar"
                         android:layout_width="170dp"
                         android:layout_height="170dp"
+                        android:background="@color/primario"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/alien1" />
+                        app:srcCompat="@mipmap/avatar1" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -75,7 +76,7 @@
             <TextView
                 android:id="@+id/txtNombre"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circle_txt"
@@ -88,7 +89,7 @@
             <TextView
                 android:id="@+id/txtCorreo"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circle_txt"
@@ -101,7 +102,7 @@
             <TextView
                 android:id="@+id/txtFechaNac"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circle_txt"
@@ -114,7 +115,7 @@
             <TextView
                 android:id="@+id/txtFechaReg"
                 android:layout_width="300dp"
-                android:layout_height="25dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circle_txt"
@@ -126,7 +127,7 @@
 
             <LinearLayout
                 android:id="@+id/btnLayout"
-                android:layout_width="413dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
@@ -139,24 +140,31 @@
 
                 <Button
                     android:id="@+id/btnEditarComentPerfil"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="20sp"
                     android:background="@drawable/circle_button"
                     android:onClick="editar"
                     android:text="@string/Botones_editar"
                     android:textAllCaps="false"
-                    android:textColor="@color/primario_texto" />
+                    android:textColor="@color/primario_texto"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/btnEliminarComentPerfil"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:background="@drawable/circle_button"
                     android:onClick="eliminar"
                     android:text="@string/Botones_eliminar"
                     android:textAllCaps="false"
-                    android:textColor="@color/primario_texto" />
+                    android:textColor="@color/primario_texto"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -165,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:text="@string/Perfil_Comentarios"

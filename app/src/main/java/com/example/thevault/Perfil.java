@@ -74,10 +74,10 @@ public class Perfil extends AppCompatActivity {
                                     txtFecha_reg.setText("Registro: "+contacto.getJSONObject(0).getString("fecha_registro"));
 
                                     if(contacto.getJSONObject(0).getString("avatar").equals("1")){
-                                        imgAvatar.setImageResource(R.mipmap.alien1);
+                                        imgAvatar.setImageResource(R.mipmap.avatar1);
                                     }
                                     if(contacto.getJSONObject(0).getString("avatar").equals("2")){
-                                        imgAvatar.setImageResource(R.mipmap.alien2);
+                                        imgAvatar.setImageResource(R.mipmap.avatar2);
                                     }
                                 }else{
                                     Toast.makeText(Perfil.this, "Error con la sesión", Toast.LENGTH_SHORT).show();

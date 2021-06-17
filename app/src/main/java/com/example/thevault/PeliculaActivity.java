@@ -148,10 +148,10 @@ public class PeliculaActivity extends AppCompatActivity {
                                         //TODO: cambiar a avatares designados.
                                         switch (jsonArray.getJSONObject(i).getInt("avatar")) {
                                             case 1:
-                                                avatar.setImageResource(R.mipmap.alien1);
+                                                avatar.setImageResource(R.mipmap.avatar1);
                                                 break;
                                             case 2:
-                                                avatar.setImageResource(R.mipmap.alien2);
+                                                avatar.setImageResource(R.mipmap.avatar2);
                                                 break;
                                         }
 

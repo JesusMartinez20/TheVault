@@ -31,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -42,12 +44,14 @@ public class AgregarComentarioActivity extends AppCompatActivity {
     private Button btnCommentAction;
     private String username;
     int movieID, score, commentID;
+    boolean esPerfil=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_comentario);
 
+        esPerfil=false;
         title = (EditText) findViewById(R.id.txtCommentViewAddTitle);
         opinion = (EditText) findViewById(R.id.txtCommentViewAddOpinion);
         btn1Star = (ImageButton) findViewById(R.id.btn1Star);
@@ -64,6 +68,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         } else {
             commentID = getIntent().getIntExtra("commentID", -1);
             llenarDatos(commentID);
+            esPerfil=true;
         }
     }
 
@@ -260,8 +265,21 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         ejecuarWebService(BEConection.URL + "editarComentario.php",
                 "Comentario editado", Request.Method.PUT);
         //clearFields();
-        Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
-        startActivity(intent);
+        if(esPerfil){
+            TimerTask tarea = new TimerTask() {
+                @Override
+                public void run() {
+                    Intent intent=new Intent(AgregarComentarioActivity.this,Perfil.class);
+                    startActivity(intent);
+                    finish();
+                }//rin
+            };
+            Timer tiempo = new Timer();
+            tiempo.schedule(tarea, 150);
+        }else {
+            Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
+            startActivity(intent);
+        }
         finish();
     }
 

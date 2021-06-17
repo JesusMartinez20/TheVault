@@ -33,6 +33,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
+                android:gravity="center"
                 android:text="TextView"
                 android:textColor="@color/primario_texto"
                 android:textSize="30sp"
@@ -199,28 +200,42 @@
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical"></LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/Pelicula_comentarios"
-                android:textColor="@color/primario_texto"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnMovieAddComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/circle_button"
-                android:onClick="goToCommentView"
-                android:text="@string/Pelicula_comentar"
-                android:textColor="@color/primario_texto" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/Pelicula_comentarios"
+                    android:textColor="@color/primario_texto"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/btnMovieAddComment"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/circle_button"
+                    android:onClick="goToCommentView"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/comentario"
+                    android:textColor="@color/primario_texto" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutMovieComments"

@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:onClick="setAvatar1"
             android:scaleType="fitCenter"
             android:tint="#00FFFFFF"
-            app:srcCompat="@mipmap/alien1" />
+            app:srcCompat="@mipmap/avatar1" />
 
         <ImageButton
             android:id="@+id/btnAvatar2"
@@ -41,17 +41,19 @@
             android:onClick="setAvatar2"
             android:scaleType="fitCenter"
             android:tint="#00FFFFFF"
-            app:srcCompat="@mipmap/alien2" />
+            app:srcCompat="@mipmap/avatar2" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/RegistroDeUsuario_avatar"
         android:textColor="@color/primario_texto"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,10 +163,11 @@
         <TextView
             android:id="@+id/txtFecha"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginLeft="15sp"
             android:layout_weight="1"
             android:background="@drawable/circle_edittext"
+            android:gravity="center_vertical"
             android:padding="5dp"
             android:text="2020-01-01"
             android:textColor="@color/secundario_texto"
@@ -172,9 +176,13 @@
 
     <LinearLayout
         android:id="@+id/btnLayout"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:textAlignment="gravity"
@@ -184,9 +192,8 @@
 
         <Button
             android:id="@+id/btnAccion"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginRight="20sp"
             android:background="@drawable/circle_button"
             android:onClick="registrar"
@@ -194,12 +201,15 @@
             android:textAllCaps="false"
             android:textColor="@color/primario_texto" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/btnRegresar"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20sp"
             android:background="@drawable/circle_button"
             android:onClick="regresar"
             android:text="Regresar"
