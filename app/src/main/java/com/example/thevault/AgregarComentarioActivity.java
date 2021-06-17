@@ -2,6 +2,7 @@ package com.example.thevault;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -61,7 +62,6 @@ public class AgregarComentarioActivity extends AppCompatActivity {
             verificarComentarioPrevio();
         } else {
             commentID = getIntent().getIntExtra("commentID", -1);
-            Toast.makeText(this, ""+commentID, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -171,12 +171,18 @@ public class AgregarComentarioActivity extends AppCompatActivity {
         ejecuarWebService(BEConection.URL + "insertarComentario.php",
                 "Comentario registrado", Request.Method.POST);
         clearFields();
+        Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
+        startActivity(intent);
+        finish();
     }
 
     public void editComment(View view) {
         ejecuarWebService(BEConection.URL + "editarComentario.php",
                 "Comentario editado", Request.Method.PUT);
         clearFields();
+        Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
+        startActivity(intent);
+        finish();
     }
 
     public void setScore(View v) {

@@ -61,8 +61,8 @@ public class RegistroUsuario extends AppCompatActivity {
         tipo = getIntent().getIntExtra("tipo", -1);
 
         avatar=1;
-        avatar1.setBackgroundColor(this.getColor(R.color.primario_oscuro));
-        avatar2.setBackgroundColor(this.getColor(R.color.primario_claro));
+        avatar1.setBackgroundColor(this.getColor(R.color.secundario_oscuro));
+        avatar2.setBackgroundColor(this.getColor(R.color.white));
 
         txtFecha.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -107,13 +107,13 @@ public class RegistroUsuario extends AppCompatActivity {
 
                                         if(contacto.getJSONObject(0).getString("avatar").equals("1")){
                                             avatar=1;
-                                            avatar1.setBackgroundColor(getApplicationContext().getColor(R.color.primario_oscuro));
-                                            avatar2.setBackgroundColor(getApplicationContext().getColor(R.color.primario_claro));
+                                            avatar1.setBackgroundColor(getApplicationContext().getColor(R.color.secundario_oscuro));
+                                            avatar2.setBackgroundColor(getApplicationContext().getColor(R.color.white));
                                         }
                                         if(contacto.getJSONObject(0).getString("avatar").equals("2")){
                                             avatar=2;
-                                            avatar2.setBackgroundColor(getApplicationContext().getColor(R.color.primario_oscuro));
-                                            avatar1.setBackgroundColor(getApplicationContext().getColor(R.color.primario_claro));
+                                            avatar2.setBackgroundColor(getApplicationContext().getColor(R.color.secundario_oscuro));
+                                            avatar1.setBackgroundColor(getApplicationContext().getColor(R.color.white));
                                         }
                                     }else{
                                         Toast.makeText(RegistroUsuario.this, "Error con la sesión", Toast.LENGTH_SHORT).show();
@@ -139,15 +139,15 @@ public class RegistroUsuario extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setAvatar1(View view){
         avatar=1;
-        avatar1.setBackgroundColor(this.getColor(R.color.primario_oscuro));
-        avatar2.setBackgroundColor(this.getColor(R.color.primario_claro));
+        avatar1.setBackgroundColor(this.getColor(R.color.secundario_oscuro));
+        avatar2.setBackgroundColor(this.getColor(R.color.white));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setAvatar2(View view){
         avatar=2;
-        avatar2.setBackgroundColor(this.getColor(R.color.primario_oscuro));
-        avatar1.setBackgroundColor(this.getColor(R.color.primario_claro));
+        avatar2.setBackgroundColor(this.getColor(R.color.secundario_oscuro));
+        avatar1.setBackgroundColor(this.getColor(R.color.white));
     }
 
     public void registrar(View view){

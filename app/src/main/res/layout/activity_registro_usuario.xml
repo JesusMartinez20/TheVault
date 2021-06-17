@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primario_oscuro"
     tools:context=".RegistroUsuario">
 
     <LinearLayout
@@ -49,6 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/RegistroDeUsuario_avatar"
+        android:textColor="@color/primario_texto"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,12 +59,18 @@
 
     <EditText
         android:id="@+id/etUsuario"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="75dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:hint="@string/DatosDeUsuario_usermane"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/secundario_texto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -70,12 +79,18 @@
 
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="75dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:hint="@string/DatosDeUsuario_nombre"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/secundario_texto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -84,12 +99,18 @@
 
     <EditText
         android:id="@+id/etCorreo"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="75dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:hint="@string/DatosDeUsuario_correo"
         android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/secundario_texto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -98,12 +119,18 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="75dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:hint="@string/InicioDeSesion_Password"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/secundario_texto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -126,6 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Fecha de nacimiento: "
+            android:textColor="@color/primario_texto"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -135,7 +163,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15sp"
             android:layout_weight="1"
+            android:background="@drawable/circle_edittext"
+            android:padding="5dp"
             android:text="2020-01-01"
+            android:textColor="@color/secundario_texto"
             android:textSize="16sp" />
     </LinearLayout>
 

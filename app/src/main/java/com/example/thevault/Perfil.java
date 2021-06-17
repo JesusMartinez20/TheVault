@@ -129,7 +129,6 @@ public class Perfil extends AppCompatActivity {
                                             public void onClick(View view) {
                                                 Intent intent=new Intent(Perfil.this,AgregarComentarioActivity.class);
                                                 intent.putExtra("commentID",commentID);
-                                                Toast.makeText(Perfil.this, ""+intent.getIntExtra("commentID",-1), Toast.LENGTH_SHORT).show();
                                                 startActivity(intent);
                                             }
                                         });

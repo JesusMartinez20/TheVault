@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primario_claro"
+    android:background="@color/primario_oscuro"
     tools:context=".Login">
 
     <TextView
@@ -37,10 +37,14 @@
         android:layout_width="267dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:hint="@string/DatosDeUsuario_usermane"
         android:inputType="textPersonName"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/secundario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -50,10 +54,14 @@
         android:layout_width="267dp"
         android:layout_height="43dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/circle_edittext"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:hint="@string/InicioDeSesion_Password"
         android:inputType="textPassword"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/secundario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
@@ -64,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/InicioDeSesion_Guardar"
+        android:textColor="@color/primario_texto"
         app:layout_constraintStart_toStartOf="@+id/etPassword"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
@@ -110,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/InicioDeSesion_registro"
+        android:textColor="@color/primario_texto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
