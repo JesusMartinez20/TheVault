@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,6 +63,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
             verificarComentarioPrevio();
         } else {
             commentID = getIntent().getIntExtra("commentID", -1);
+            llenarDatos(commentID);
         }
     }
 
@@ -90,6 +92,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(new String(responseBody));
                                     commentID = jsonObject.getInt("id");
+                                    llenarDatos(commentID);
                                 } catch (JSONException e) {
                                     Toast.makeText(AgregarComentarioActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
@@ -108,6 +111,83 @@ public class AgregarComentarioActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         Toast.makeText(AgregarComentarioActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void llenarDatos(int commentId){
+        AsyncHttpClient cliente = new AsyncHttpClient();
+        cliente.get(BEConection.URL + "consultarComentario.php?id="+commentId,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        if(statusCode == 200){
+                            try{
+                                String x = new String(responseBody);
+                                if( !x.equals("0")){
+                                    JSONArray contacto = new JSONArray(new String(responseBody));
+                                    title.setText(contacto.getJSONObject(0).getString("titulo"));
+                                    opinion.setText(contacto.getJSONObject(0).getString("opinion"));
+                                    Drawable drawableON = getResources().getDrawable(android.R.drawable.btn_star_big_on);
+                                    Drawable drawableOFF = getResources().getDrawable(android.R.drawable.btn_star_big_off);
+                                    switch (contacto.getJSONObject(0).getInt("calificacion")) {
+                                        case 1:
+                                            score = 1;
+                                            btn1Star.setImageDrawable(drawableON);
+                                            btn2Stars.setImageDrawable(drawableOFF);
+                                            btn3Stars.setImageDrawable(drawableOFF);
+                                            btn4Stars.setImageDrawable(drawableOFF);
+                                            btn5Stars.setImageDrawable(drawableOFF);
+                                            break;
+                                        case 2:
+                                            score = 2;
+                                            btn1Star.setImageDrawable(drawableON);
+                                            btn2Stars.setImageDrawable(drawableON);
+                                            btn3Stars.setImageDrawable(drawableOFF);
+                                            btn4Stars.setImageDrawable(drawableOFF);
+                                            btn5Stars.setImageDrawable(drawableOFF);
+                                            break;
+                                        case 3:
+                                            score = 3;
+                                            btn1Star.setImageDrawable(drawableON);
+                                            btn2Stars.setImageDrawable(drawableON);
+                                            btn3Stars.setImageDrawable(drawableON);
+                                            btn4Stars.setImageDrawable(drawableOFF);
+                                            btn5Stars.setImageDrawable(drawableOFF);
+                                            break;
+                                        case 4:
+                                            score = 4;
+                                            btn1Star.setImageDrawable(drawableON);
+                                            btn2Stars.setImageDrawable(drawableON);
+                                            btn3Stars.setImageDrawable(drawableON);
+                                            btn4Stars.setImageDrawable(drawableON);
+                                            btn5Stars.setImageDrawable(drawableOFF);
+                                            break;
+                                        case 5:
+                                            score = 5;
+                                            btn1Star.setImageDrawable(drawableON);
+                                            btn2Stars.setImageDrawable(drawableON);
+                                            btn3Stars.setImageDrawable(drawableON);
+                                            btn4Stars.setImageDrawable(drawableON);
+                                            btn5Stars.setImageDrawable(drawableON);
+                                            break;
+                                    }
+
+                                }else{
+                                    Toast.makeText(AgregarComentarioActivity.this, "Error con la consulta", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e){
+                                Toast.makeText(AgregarComentarioActivity.this, "Error al obtener información.", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+
+                            Toast.makeText(AgregarComentarioActivity.this, "Error con la sesión", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+
+                    public void onFailure(int statusCode, Header[] headers, byte[]
+                            responseBody, Throwable error) {
                     }
                 });
     }
@@ -170,7 +250,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
     public void addComment(View view) {
         ejecuarWebService(BEConection.URL + "insertarComentario.php",
                 "Comentario registrado", Request.Method.POST);
-        clearFields();
+        //clearFields();
         Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
         startActivity(intent);
         finish();
@@ -179,7 +259,7 @@ public class AgregarComentarioActivity extends AppCompatActivity {
     public void editComment(View view) {
         ejecuarWebService(BEConection.URL + "editarComentario.php",
                 "Comentario editado", Request.Method.PUT);
-        clearFields();
+        //clearFields();
         Intent intent=new Intent(AgregarComentarioActivity.this,Feed.class);
         startActivity(intent);
         finish();
