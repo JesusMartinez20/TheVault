@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -122,7 +123,7 @@ public class Perfil extends AppCompatActivity {
                                         txtOpinion.setText(jsonArray.getJSONObject(i).getString("opinion"));
                                         ImageView avatar = (ImageView) comment.findViewById(R.id.imgComentarioAvatarPerfil);
                                         Picasso.get().load(jsonArray.getJSONObject(i).getString("imagen")).into(avatar);
-                                        Button btnEditarComentario=(Button)comment.findViewById(R.id.btnEditarComentPerfil);
+                                        ImageButton btnEditarComentario=(ImageButton)comment.findViewById(R.id.btnEditarComentPerfil);
                                         final int commentID=jsonArray.getJSONObject(i).getInt("id");
                                         btnEditarComentario.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -135,7 +136,7 @@ public class Perfil extends AppCompatActivity {
 
 
 
-                                        Button btnEliminarComentario=(Button)comment.findViewById(R.id.btnEliminarComentPerfil);
+                                        ImageButton btnEliminarComentario=(ImageButton)comment.findViewById(R.id.btnEliminarComentPerfil);
                                         btnEliminarComentario.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {

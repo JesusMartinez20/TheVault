@@ -121,30 +121,37 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-                    <Button
-                        android:id="@+id/btnEditarComentPerfil"
-                        android:layout_width="70dp"
-                        android:layout_height="25dp"
-                        android:background="@drawable/circle_button"
-                        android:text="@string/Botones_editar"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primario_texto"
-                        android:textSize="12sp" />
-
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
-                    <Button
-                        android:id="@+id/btnEliminarComentPerfil"
-                        android:layout_width="70dp"
+                    <ImageButton
+                        android:id="@+id/btnEditarComentPerfil"
+                        android:layout_width="30dp"
                         android:layout_height="25dp"
                         android:background="@drawable/circle_button"
-                        android:text="@string/Botones_eliminar"
+
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/dibujar"
                         android:textAllCaps="false"
                         android:textColor="@color/primario_texto"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:tint="@color/white" />
+
+                    <ImageButton
+                        android:id="@+id/btnEliminarComentPerfil"
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+
+                        android:background="@drawable/circle_button"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/basura"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primario_texto"
+                        android:textSize="12sp"
+                        android:tint="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>
