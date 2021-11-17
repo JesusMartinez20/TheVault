@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Perfil"></activity>
+        <activity
+            android:name=".LectorQR"
+            android:exported="false" />
+        <activity android:name=".Feed2" />
+        <activity android:name=".Perfil" />
         <activity android:name=".Staff" />
         <activity android:name=".Feed" />
         <activity android:name=".AgregarComentarioActivity" />
