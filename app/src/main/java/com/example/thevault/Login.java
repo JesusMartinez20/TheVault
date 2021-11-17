@@ -57,6 +57,9 @@ public class Login extends AppCompatActivity {
     private void guardarPreferencias(String usuario,boolean isRegistrado){
         SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
         SharedPreferences.Editor editor=preferencias.edit();
+        if(usuario.equals("admin")){
+            editor.putBoolean("admin",true);
+        }
         editor.putString("usuario",usuario);
         editor.putBoolean("registrado",isRegistrado);
         editor.apply();
@@ -79,7 +82,7 @@ public class Login extends AppCompatActivity {
                                     JSONArray contacto = new JSONArray(new String(responseBody));
                                      if(password.equals(contacto.getJSONObject(0).getString("contrasena"))){
                                          guardarPreferencias(username,guardar.isChecked());
-                                         Intent login=new Intent(Login.this,Feed.class);
+                                         Intent login=new Intent(Login.this,Feed2.class);
                                          startActivity(login);
                                      }else{
                                          Toast.makeText(Login.this, "La contraseña es incorrecta", Toast.LENGTH_SHORT).show();
