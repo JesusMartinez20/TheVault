@@ -56,4 +56,10 @@
     <string name="AgregarComentario_editarComentario">Editar comentario</string>
     <string name="AgregarComentario_agregarTitulo">Agregar título</string>
     <string name="AgregarComentario_agregarOpinion">Agregar opinión</string>
+    <string name="title_activity_feed_prueba">FeedPrueba</string>
+    <string name="tab_cartelera">Cartelera</string>
+    <string name="tab_foro">Foro</string>
+    <string name="title_activity_feed2">Feed2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

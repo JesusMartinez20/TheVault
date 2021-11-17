@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if (nuevoUsuario()) {
-                    intent = new Intent(MainActivity.this, Feed.class);
+
+                    intent = new Intent(MainActivity.this, Feed2.class);
                 } else {
                     intent = new Intent(MainActivity.this, Login.class);
                 }

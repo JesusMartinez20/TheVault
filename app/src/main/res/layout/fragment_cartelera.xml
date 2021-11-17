@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primario_oscuro"
-    tools:context=".Feed">
+    tools:context=".Cartelera">
 
     <LinearLayout
         android:id="@+id/linearLayout7"
@@ -62,4 +62,5 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
     </ListView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

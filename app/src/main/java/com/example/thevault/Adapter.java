@@ -39,13 +39,13 @@ public class Adapter extends BaseAdapter {
         TextView nombre=(TextView)v.findViewById(R.id.nombre);
         TextView duracion=(TextView)v.findViewById(R.id.duracion);
         ImageView imagen=(ImageView)v.findViewById(R.id.imagen);
-        TextView año=(TextView)v.findViewById(R.id.año);
+        TextView anio=(TextView)v.findViewById(R.id.anio);
         TextView numComentarios=(TextView)v.findViewById(R.id.numComentarios);
         TextView numPremios=(TextView)v.findViewById(R.id.numPremios);
 
         nombre.setText(arreglo.get(i).nombre);
         duracion.setText(arreglo.get(i).duracion + " min");
-        año.setText(arreglo.get(i).año);
+        anio.setText(arreglo.get(i).anio);
         numComentarios.setText(arreglo.get(i).comentarios);
         numPremios.setText(arreglo.get(i).premios);
         Picasso.get().load(arreglo.get(i).imagen).into(imagen);

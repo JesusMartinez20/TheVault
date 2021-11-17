@@ -57,7 +57,7 @@ public class Feed extends AppCompatActivity {
                                             carta.nombre=peliculas.getJSONObject(i).getString("nombre");
                                             carta.imagen=peliculas.getJSONObject(i).getString("imagen");
                                             carta.duracion=peliculas.getJSONObject(i).getString("duracion");
-                                            carta.año=peliculas.getJSONObject(i).getString("fecha_estreno");
+                                            carta.anio=peliculas.getJSONObject(i).getString("fecha_estreno");
                                             carta.premios=peliculas.getJSONObject(i).getString("premios");
                                             carta.comentarios=peliculas.getJSONObject(i).getString("comentarios");
                                             resultado.add(carta);
@@ -100,7 +100,7 @@ public class Feed extends AppCompatActivity {
                                             carta.nombre=peliculas.getJSONObject(i).getString("nombre");
                                             carta.imagen=peliculas.getJSONObject(i).getString("imagen");
                                             carta.duracion=peliculas.getJSONObject(i).getString("duracion");
-                                            carta.año=peliculas.getJSONObject(i).getString("fecha_estreno");
+                                            carta.anio=peliculas.getJSONObject(i).getString("fecha_estreno");
                                             carta.premios=peliculas.getJSONObject(i).getString("premios");
                                             carta.comentarios=peliculas.getJSONObject(i).getString("comentarios");
                                             resultado.add(carta);
