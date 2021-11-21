@@ -230,7 +230,7 @@ public class Perfil extends AppCompatActivity {
     }
 
     public void regresar(View view){
-        Intent feed=new Intent(Perfil.this,Feed.class);
+        Intent feed=new Intent(Perfil.this,Feed2.class);
         startActivity(feed);
     }
 
