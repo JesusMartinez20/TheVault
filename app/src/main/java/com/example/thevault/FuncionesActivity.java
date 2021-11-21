@@ -1,15 +1,25 @@
 package com.example.thevault;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -24,6 +34,7 @@ public class FuncionesActivity extends AppCompatActivity {
 
     private TextView nombre, director, duracion, anio, pais;
     private ImageView imagen;
+    private String username;
     private LinearLayout layoutFunciones;
     private int movieID;
 
@@ -42,6 +53,9 @@ public class FuncionesActivity extends AppCompatActivity {
         layoutFunciones = (LinearLayout) findViewById(R.id.layoutFunciones);
 
         movieID = (int) getIntent().getIntExtra("peliculaID", 0);
+
+        SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
+        username = preferences.getString("usuario", null);
 
         putInfo();
         getFunciones();
@@ -103,7 +117,7 @@ public class FuncionesActivity extends AppCompatActivity {
                             String x = new String(responseBody);
                             if (!x.equals("0")) {
                                 try {
-                                    JSONArray jsonArray = new JSONArray(new String(responseBody));
+                                    final JSONArray jsonArray = new JSONArray(new String(responseBody));
 
                                     for (int i = 0; i < jsonArray.length(); ++i) {
                                         View funcion = getLayoutInflater().inflate(R.layout.funciones_vista, null);
@@ -113,15 +127,50 @@ public class FuncionesActivity extends AppCompatActivity {
                                         sala.setText(jsonArray.getJSONObject(i).getString("id_sala"));
                                         TextView asientosOcupados= (TextView) funcion.findViewById(R.id.txtFuncionAsientos);
                                         asientosOcupados.setText(jsonArray.getJSONObject(i).getString("asientos_ocupados")+"/"+jsonArray.getJSONObject(i).getString("capacidad"));
+                                        final int capacidad=Integer.valueOf(jsonArray.getJSONObject(i).getString("capacidad"));
+                                        final int ocupados=Integer.valueOf(jsonArray.getJSONObject(i).getString("asientos_ocupados"));
                                         final int id_funcion=Integer.valueOf(jsonArray.getJSONObject(i).getString("id"));
 
                                         funcion.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Intent intent=new Intent(getApplicationContext(),FuncionesActivity.class);
-                                                intent.putExtra("funcionID",id_funcion);
 
-                                                startActivity(intent);
+                                                if(ocupados<capacidad){
+                                                    final NumberPicker numberPicker = new NumberPicker(getApplicationContext());
+                                                    if(capacidad-ocupados>=10){
+                                                        numberPicker.setMaxValue(10);
+                                                    }else{
+                                                        numberPicker.setMaxValue(capacidad-ocupados);
+                                                    }
+                                                    numberPicker.setMinValue(1);
+
+                                                    AlertDialog.Builder myBuild=new AlertDialog.Builder(FuncionesActivity.this);
+                                                    myBuild.setView(numberPicker);
+
+                                                    myBuild.setPositiveButton("Comprar",new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            ejecutarWebService(BEConection.URL + "insertarBoleto.php?id_username="+username+"&asientos=+"+String.valueOf(numberPicker.getValue())+"&id_funcion="+id_funcion, String.valueOf(numberPicker.getValue())+" Boleto(s) comprado(s) exitosamente");
+                                                            Intent intent=new Intent(FuncionesActivity.this,Feed2.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                            //Toast.makeText(FuncionesActivity.this, "Comprar "+String.valueOf(numberPicker.getValue())+" boletos", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    });
+
+                                                    myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            dialogInterface.cancel();
+                                                        }
+                                                    });
+
+                                                    AlertDialog dialog=myBuild.create();
+                                                    dialog.show();
+                                                }else{
+                                                    Toast.makeText(FuncionesActivity.this, "Todos los asientos han sido ocupados", Toast.LENGTH_LONG).show();
+                                                }
+
                                             }
                                         });
 
@@ -139,5 +188,22 @@ public class FuncionesActivity extends AppCompatActivity {
                         Toast.makeText(FuncionesActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void ejecutarWebService(String url, final String msg){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new
+                Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(FuncionesActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FuncionesActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
