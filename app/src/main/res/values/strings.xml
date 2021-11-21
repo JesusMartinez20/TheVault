@@ -56,6 +56,12 @@
     <string name="AgregarComentario_editarComentario">Editar comentario</string>
     <string name="AgregarComentario_agregarTitulo">Agregar título</string>
     <string name="AgregarComentario_agregarOpinion">Agregar opinión</string>
+
+    <string name="Funciones_funcionesTitutlo">Funciones</string>
+    <string name="Funciones_horario">Horario</string>
+    <string name="Funciones_sala">Sala</string>
+    <string name="Funciones_asientosOcupados">Asientos ocupados</string>
+
     <string name="title_activity_feed_prueba">FeedPrueba</string>
     <string name="tab_cartelera">Cartelera</string>
     <string name="tab_foro">Foro</string>

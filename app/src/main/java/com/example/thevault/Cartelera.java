@@ -86,7 +86,7 @@ public class Cartelera extends Fragment {
         btnBusqueda=(ImageButton) view.findViewById(R.id.btnBusqueda);
 
         final ListView lista;
-        final Adapter adaptador=new Adapter();
+        final AdapterCartelera adaptador=new AdapterCartelera();
         lista=(ListView) view.findViewById(R.id.lista);
 
         final JSONArray[] pel = {new JSONArray()};
