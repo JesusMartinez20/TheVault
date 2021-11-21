@@ -63,6 +63,11 @@
     <string name="Funciones_asientosOcupados">Asientos ocupados</string>
 
     <string name="Perfil_boletosComprados">Boletos Comprados</string>
+    <string name="Perfil_peliculaBoleto">Película</string>
+    <string name="Perfil_FuncionBoleto">Función</string>
+    <string name="Perfil_AsientosBoleto">Asientos</string>
+    <string name="Perfil_idBoleto">Id</string>
+    <string name="Perfil_verBoleto">Ver</string>
 
     <string name="title_activity_feed_prueba">FeedPrueba</string>
     <string name="tab_cartelera">Cartelera</string>

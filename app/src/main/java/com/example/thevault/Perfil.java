@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,7 @@ public class Perfil extends AppCompatActivity {
     private TextView txtUsuario,txtNombre,txtCorreo,txtFecha_nac,txtFecha_reg;
     private Button btnEditar,btnEliminar;
     private ImageView imgAvatar;
-    private LinearLayout lyComentarios;
+    private LinearLayout lyComentarios,lyBoletos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class Perfil extends AppCompatActivity {
         btnEditar=(Button)findViewById(R.id.btnEditarComentPerfil);
         btnEliminar=(Button)findViewById(R.id.btnEliminarComentPerfil);
         lyComentarios=(LinearLayout)findViewById(R.id.lyComentarios);
+        lyBoletos=(LinearLayout)findViewById(R.id.lyBoletosComprados);
 
         SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
         usuario=preferencias.getString("usuario","usuario");
@@ -99,6 +101,58 @@ public class Perfil extends AppCompatActivity {
                 });
 
         AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(BEConection.URL + "consultarBoletos.php?username=" + usuario,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        if (statusCode == 200) {
+                            String x = new String(responseBody);
+                            if (!x.equals("0")) {
+                                try {
+                                    JSONArray jsonArray = new JSONArray(new String(responseBody));
+
+                                    for (int i = 0; i < jsonArray.length(); ++i) {
+
+                                        View boleto = getLayoutInflater().inflate(R.layout.boletos_vista, null);
+                                        TextView txtIdBoleto=(TextView)boleto.findViewById(R.id.txtIdBoleto);
+                                        txtIdBoleto.setText("#"+jsonArray.getJSONObject(i).getString("id"));
+                                        TextView txtNombrePelicula=(TextView)boleto.findViewById(R.id.txtNombrePelicula);
+                                        txtNombrePelicula.setText(jsonArray.getJSONObject(i).getString("nombre"));
+                                        TextView txtFuncionBoleto=(TextView)boleto.findViewById(R.id.txtFuncionBoleto);
+                                        txtFuncionBoleto.setText(jsonArray.getJSONObject(i).getString("horario"));
+                                        TextView txtAsientosBoleto=(TextView)boleto.findViewById(R.id.txtAsientosBoleto);
+                                        txtAsientosBoleto.setText(jsonArray.getJSONObject(i).getString("asientos"));
+
+                                        ImageButton btnVerBoleto=(ImageButton)boleto.findViewById(R.id.btnVerBoleto);
+
+                                        final int boletoID=jsonArray.getJSONObject(i).getInt("id");
+
+                                        btnVerBoleto.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent=new Intent(Perfil.this,AgregarComentarioActivity.class);
+                                                intent.putExtra("boletoID",boletoID);
+                                                startActivity(intent);
+                                            }
+                                        });
+
+                                        lyBoletos.addView(boleto);
+                                    }
+                                } catch (JSONException e) {
+                                    Toast.makeText(Perfil.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Toast.makeText(Perfil.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        client = new AsyncHttpClient();
 
         client.get(BEConection.URL + "consulta_comentarios_perfil.php?username=" + usuario,
                 new AsyncHttpResponseHandler() {

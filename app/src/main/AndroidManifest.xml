@@ -18,6 +18,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VistaBoleto"
+            android:exported="false" />
+        <activity
             android:name=".FuncionesActivity"
             android:exported="false" />
         <activity
