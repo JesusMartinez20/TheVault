@@ -39,6 +39,7 @@ import cz.msebera.android.httpclient.Header;
 public class VistaBoleto extends AppCompatActivity {
 
     private ImageView imagenQr;
+    private TextView txtTitulo, txtFuncion, txtSala,txtAsientos, txtDuracion;
     private int boletoID;
 
     @Override
@@ -47,6 +48,11 @@ public class VistaBoleto extends AppCompatActivity {
         setContentView(R.layout.activity_vista_boleto);
 
         imagenQr=(ImageView)findViewById(R.id.imgQr);
+        txtTitulo=(TextView)findViewById(R.id.txtNombrePeliculaBoleto);
+        txtFuncion=(TextView)findViewById(R.id.txtFuncion);
+        txtSala=(TextView)findViewById(R.id.txtSala);
+        txtAsientos=(TextView)findViewById(R.id.txtAsientos);
+        txtDuracion=(TextView)findViewById(R.id.txtDuracion);
 
         boletoID = (int) getIntent().getIntExtra("boletoID", 0);
 
@@ -64,15 +70,11 @@ public class VistaBoleto extends AppCompatActivity {
 
                                     for (int i = 0; i < jsonArray.length(); ++i) {
 
-                                        /*View boleto = getLayoutInflater().inflate(R.layout.boletos_vista, null);
-                                        TextView txtIdBoleto=(TextView)boleto.findViewById(R.id.txtIdBoleto);
-                                        txtIdBoleto.setText("#"+jsonArray.getJSONObject(i).getString("id"));
-                                        TextView txtNombrePelicula=(TextView)boleto.findViewById(R.id.txtNombrePelicula);
-                                        txtNombrePelicula.setText(jsonArray.getJSONObject(i).getString("nombre"));
-                                        TextView txtFuncionBoleto=(TextView)boleto.findViewById(R.id.txtFuncionBoleto);
-                                        txtFuncionBoleto.setText(jsonArray.getJSONObject(i).getString("horario"));
-                                        TextView txtAsientosBoleto=(TextView)boleto.findViewById(R.id.txtAsientosBoleto);
-                                        txtAsientosBoleto.setText(jsonArray.getJSONObject(i).getString("asientos"));*/
+                                        txtTitulo.setText(jsonArray.getJSONObject(i).getString("nombre"));
+                                        txtFuncion.setText("Función: "+jsonArray.getJSONObject(i).getString("horario"));
+                                        txtSala.setText("Sala "+jsonArray.getJSONObject(i).getString("id_sala"));
+                                        txtAsientos.setText("Número de asientos: "+jsonArray.getJSONObject(i).getString("asientos"));
+                                        txtDuracion.setText("Duración: "+jsonArray.getJSONObject(i).getString("duracion"));
 
                                         String url="Película - "+jsonArray.getJSONObject(i).getString("nombre")+"\nFunción: "+jsonArray.getJSONObject(i).getString("horario")+"\nSala "+jsonArray.getJSONObject(i).getInt("id_sala")+"\nAsientos: "+jsonArray.getJSONObject(i).getInt("asientos");
 
