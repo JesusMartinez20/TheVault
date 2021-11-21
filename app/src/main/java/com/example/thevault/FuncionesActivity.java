@@ -28,6 +28,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
 
 public class FuncionesActivity extends AppCompatActivity {
@@ -129,14 +135,27 @@ public class FuncionesActivity extends AppCompatActivity {
                                         TextView asientosOcupados= (TextView) funcion.findViewById(R.id.txtFuncionAsientos);
                                         asientosOcupados.setText(jsonArray.getJSONObject(i).getString("asientos_ocupados")+"/"+jsonArray.getJSONObject(i).getString("capacidad"));
                                         final int stringSala=Integer.valueOf(jsonArray.getJSONObject(i).getString("id_sala"));
+
                                         final String stringHorario=jsonArray.getJSONObject(i).getString("horario");
+
+                                        Date horarioF=null;
+                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                        try {
+                                            horarioF = sdf.parse(stringHorario.toString());
+                                        } catch (Exception e) {
+                                            Toast.makeText(FuncionesActivity.this, "Error: "+e, Toast.LENGTH_LONG).show();
+                                        }
+                                        final Date horarioFuncion=horarioF;
+
                                         final int capacidad=Integer.valueOf(jsonArray.getJSONObject(i).getString("capacidad"));
                                         final int ocupados=Integer.valueOf(jsonArray.getJSONObject(i).getString("asientos_ocupados"));
                                         final int id_funcion=Integer.valueOf(jsonArray.getJSONObject(i).getString("id"));
+                                        Date date = new java.util.Date();
 
                                         funcion.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
+
 
                                                 if(ocupados<capacidad){
                                                     final NumberPicker numberPicker = new NumberPicker(getApplicationContext());
@@ -178,8 +197,11 @@ public class FuncionesActivity extends AppCompatActivity {
 
                                             }
                                         });
+                                        //Protección de horario
+                                        if(date.before(horarioFuncion)){
+                                            layoutFunciones.addView(funcion);
+                                        }
 
-                                        layoutFunciones.addView(funcion);
                                     }
                                 } catch (JSONException e) {
                                     Toast.makeText(FuncionesActivity.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
