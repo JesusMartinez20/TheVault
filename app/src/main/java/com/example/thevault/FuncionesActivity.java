@@ -34,7 +34,7 @@ public class FuncionesActivity extends AppCompatActivity {
 
     private TextView nombre, director, duracion, anio, pais;
     private ImageView imagen;
-    private String username;
+    private String username, pelicula;
     private LinearLayout layoutFunciones;
     private int movieID;
 
@@ -76,7 +76,8 @@ public class FuncionesActivity extends AppCompatActivity {
 
                                     //Se establecen los vaores de la imagen y de los textview en la vista pricipal
                                     Picasso.get().load(movie.getString("imagen")).into(imagen);
-                                    nombre.setText(movie.getString("nombre"));
+                                    pelicula=movie.getString("nombre");
+                                    nombre.setText(pelicula);
                                     duracion.setText(movie.getString("duracion") + " min.");
                                     anio.setText(movie.getString("fecha"));
                                     pais.setText(movie.getString("pais"));
@@ -127,6 +128,8 @@ public class FuncionesActivity extends AppCompatActivity {
                                         sala.setText(jsonArray.getJSONObject(i).getString("id_sala"));
                                         TextView asientosOcupados= (TextView) funcion.findViewById(R.id.txtFuncionAsientos);
                                         asientosOcupados.setText(jsonArray.getJSONObject(i).getString("asientos_ocupados")+"/"+jsonArray.getJSONObject(i).getString("capacidad"));
+                                        final int stringSala=Integer.valueOf(jsonArray.getJSONObject(i).getString("id_sala"));
+                                        final String stringHorario=jsonArray.getJSONObject(i).getString("horario");
                                         final int capacidad=Integer.valueOf(jsonArray.getJSONObject(i).getString("capacidad"));
                                         final int ocupados=Integer.valueOf(jsonArray.getJSONObject(i).getString("asientos_ocupados"));
                                         final int id_funcion=Integer.valueOf(jsonArray.getJSONObject(i).getString("id"));
@@ -146,6 +149,8 @@ public class FuncionesActivity extends AppCompatActivity {
 
                                                     AlertDialog.Builder myBuild=new AlertDialog.Builder(FuncionesActivity.this);
                                                     myBuild.setView(numberPicker);
+
+                                                    myBuild.setMessage("Comprar Boletos para "+pelicula+"\nHorario: "+stringHorario+"\nSala: "+stringSala);
 
                                                     myBuild.setPositiveButton("Comprar",new DialogInterface.OnClickListener() {
                                                         @Override
@@ -168,7 +173,7 @@ public class FuncionesActivity extends AppCompatActivity {
                                                     AlertDialog dialog=myBuild.create();
                                                     dialog.show();
                                                 }else{
-                                                    Toast.makeText(FuncionesActivity.this, "Todos los asientos han sido ocupados", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(FuncionesActivity.this, "Todos los asientos han sido comprados", Toast.LENGTH_LONG).show();
                                                 }
 
                                             }
