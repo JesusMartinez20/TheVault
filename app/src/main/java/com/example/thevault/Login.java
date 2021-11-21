@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
     private void guardarPreferencias(String usuario,boolean isRegistrado){
         SharedPreferences preferencias=getSharedPreferences("user.dat",MODE_PRIVATE);
         SharedPreferences.Editor editor=preferencias.edit();
-        if(usuario.equals("admin")){
+        if(usuario.toLowerCase().equals("admin")){
             editor.putBoolean("admin",true);
         }
         editor.putString("usuario",usuario);
