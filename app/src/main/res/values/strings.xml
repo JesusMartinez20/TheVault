@@ -69,6 +69,8 @@
     <string name="Perfil_idBoleto">Id</string>
     <string name="Perfil_verBoleto">Ver</string>
 
+    <string name="Boleto_titulo">Boleto</string>
+
     <string name="title_activity_feed_prueba">FeedPrueba</string>
     <string name="tab_cartelera">Cartelera</string>
     <string name="tab_foro">Foro</string>

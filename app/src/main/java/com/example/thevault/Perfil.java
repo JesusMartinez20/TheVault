@@ -131,7 +131,7 @@ public class Perfil extends AppCompatActivity {
                                         btnVerBoleto.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Intent intent=new Intent(Perfil.this,AgregarComentarioActivity.class);
+                                                Intent intent=new Intent(Perfil.this,VistaBoleto.class);
                                                 intent.putExtra("boletoID",boletoID);
                                                 startActivity(intent);
                                             }
