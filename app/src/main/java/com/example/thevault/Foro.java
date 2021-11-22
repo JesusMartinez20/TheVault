@@ -98,6 +98,7 @@ public class Foro extends Fragment {
                 for (int i = 0; pel[0].length() > i; i++){
                     Card carta=new Card();
                     try{
+                        carta.id=pel[0].getJSONObject(i).getInt("id");
                         carta.nombre= pel[0].getJSONObject(i).getString("nombre");
                         carta.imagen= pel[0].getJSONObject(i).getString("imagen");
                         carta.duracion= pel[0].getJSONObject(i).getString("duracion");
@@ -129,6 +130,7 @@ public class Foro extends Fragment {
                 for (int i = 0; pel[0].length() > i; i++){
                     Card carta=new Card();
                     try{
+                        carta.id=pel[0].getJSONObject(i).getInt("id");
                         carta.nombre= pel[0].getJSONObject(i).getString("nombre");
                         carta.imagen= pel[0].getJSONObject(i).getString("imagen");
                         carta.duracion= pel[0].getJSONObject(i).getString("duracion");
