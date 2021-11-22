@@ -205,12 +205,14 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
     public void irAStaff(View view) {
         Intent staff = new Intent(this, AdministradorStaffActivity.class);
         staff.putExtra("accion", accionRecibida); //0 para agregar staff, 1 para ir a lista.
+        staff.putExtra("peliculaID", peliculaID);
         startActivity(staff);
     }
 
     public void irAPremios(View view) {
         Intent staff = new Intent(this, AdministradorPremiosActivity.class);
         staff.putExtra("accion", accionRecibida); //0 para agregar staff, 1 para ir a lista.
+        staff.putExtra("peliculaID", peliculaID);
         startActivity(staff);
     }
 
