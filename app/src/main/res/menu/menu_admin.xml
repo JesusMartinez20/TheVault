@@ -4,8 +4,8 @@
         android:id="@+id/menu_agregar_pelicula"
         android:title="@string/agregarPelicula" />
     <item
-        android:id="@+id/editar_funciones"
-        android:title="Editar funciones" />
+        android:id="@+id/perfil_admin"
+        android:title="Perfil" />
     <item
         android:id="@+id/leer_boletos"
         android:title="Leer boletos" />
