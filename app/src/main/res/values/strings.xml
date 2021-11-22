@@ -75,6 +75,37 @@
     <string name="tab_cartelera">Cartelera</string>
     <string name="tab_foro">Foro</string>
     <string name="title_activity_feed2">Feed2</string>
+
+    <string name="tituloPelicula">Título</string>
+    <string name="duracion">Duración</string>
+    <string name="paisOrigen">País de origen</string>
+    <string name="imagen">Imagen asociada</string>
+    <string name="fechaDeEstreno">Estreno</string>
+    <string name="enProyeccion">Está en proyección</string>
+    <string name="agregarPelicula">Agregar película</string>
+    <string name="modificarPelicula">Modificar película</string>
+    <string name="eliminarPelicula">Eliminar película</string>
+
+    <string name="modificarStaff">Modificar staff</string>
+    <string name="agregarStaff">Agregar staff</string>
+    <string name="eliminarStaff">Eliminar staff</string>
+    <string name="nombreStaff">Nombre</string>
+    <string name="nacionalidadStaff">Nacionalidad</string>
+    <string name="nacimientoStaff">Fecha de nacimiento</string>
+    <string name="sexoStaff">Sexo</string>
+    <string name="imagenStaff">Imagen</string>
+    <string name="rolStaff">Rol</string>
+
+    <string name="modificarPremio">Modificar premio</string>
+    <string name="agregarPremio">Agregar premio</string>
+    <string name="eliminarPremio">Eliminar premio</string>
+    <string name="categoriaPremio">Categoria</string>
+    <string name="fechaPremio">Fecha</string>
+    <string name="lugarPremio">Lugar</string>
+    <string name="academiaPremio">Academia</string>
+    <string name="hombreStaff">Hombre</string>
+    <string name="mujerStaff">Mujer</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

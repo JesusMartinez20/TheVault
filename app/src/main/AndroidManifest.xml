@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".PremiosListaActivity"></activity>
+        <activity android:name=".StaffListaActivity" />
+        <activity android:name=".AdministradorPremiosActivity" />
+        <activity android:name=".AdministradorStaffActivity" />
+        <activity android:name=".AdministradorPeliculaActivity" />
         <activity
             android:name=".VistaBoleto"
             android:exported="false" />

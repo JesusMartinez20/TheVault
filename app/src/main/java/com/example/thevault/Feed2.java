@@ -53,6 +53,11 @@ public class Feed2 extends AppCompatActivity {
                 Intent perfil = new Intent(this,Perfil.class);
                 startActivity(perfil);
                 break;
+            case R.id.menu_agregar_pelicula:
+                Intent agregarPelicula = new Intent(this, AdministradorPeliculaActivity.class);
+                agregarPelicula.putExtra("accion", 0); //0 para agregar pelicula.
+                startActivity(agregarPelicula);
+                break;
             case R.id.cerrarSesion:
                 cerrarSesion();
                 break;

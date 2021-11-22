@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".AdministradorPremiosActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtAdminPremioAccion"
+                android:text="@string/agregarPremio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:textColor="@color/primario_texto"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtAdminPremioCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/categoriaPremio" />
+
+            <EditText
+                android:id="@+id/txtAdminPremioLugar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/lugarPremio"/>
+
+            <EditText
+                android:id="@+id/txtAdminPremioAdademia"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/academiaPremio" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fechaPremio"
+                    android:textColor="@color/primario_texto"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdminPremioFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle_edittext"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="2020-01-01"
+                    android:textColor="@color/secundario_texto"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAdminPremioAccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/circle_button"
+                android:gravity="center"
+                android:onClick="accionPremio"
+                android:text="@string/agregarPremio"
+                android:textColor="@color/primario_texto" />
+
+            <Button
+                android:id="@+id/btnAdminPremioEliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/circle_button"
+                android:gravity="center"
+                android:onClick="eliminarPremio"
+                android:text="@string/eliminarPremio"
+                android:textColor="@color/primario_texto" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

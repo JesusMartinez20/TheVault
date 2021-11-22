@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".AdministradorStaffActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtAdminStaffAccion"
+                android:text="@string/agregarStaff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:textColor="@color/primario_texto"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtAdminStaffNombre"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/nombreStaff"/>
+
+            <EditText
+                android:id="@+id/txtAdminStaffNacionalidad"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/nacionalidadStaff" />
+
+            <EditText
+                android:id="@+id/txtAdminStaffImagen"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/circle_edittext"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primario_texto"
+                android:textColorHint="@color/primario_texto"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/imagenStaff" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/nacimientoStaff"
+                    android:textColor="@color/primario_texto"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdminStaffFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle_edittext"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="2020-01-01"
+                    android:textColor="@color/secundario_texto"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spnAdminStaffRol"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/rgAdminStaffSexo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="40dp">
+
+                <RadioButton
+                    android:id="@+id/rbtAdminStaffHombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hombreStaff"
+                    android:textColor="@color/primario_texto" />
+
+                <RadioButton
+                    android:id="@+id/rbtAdminStaffMujer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mujerStaff"
+                    android:textColor="@color/primario_texto" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnAdminStaffAccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/circle_button"
+                android:gravity="center"
+                android:textColor="@color/primario_texto"
+                android:text="@string/agregarStaff" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circle_button"
+                android:gravity="center"
+                android:text="@string/eliminarStaff"
+                android:textColor="@color/primario_texto" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
