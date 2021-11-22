@@ -74,7 +74,7 @@ public class VistaBoleto extends AppCompatActivity {
                                         txtFuncion.setText("Función: "+jsonArray.getJSONObject(i).getString("horario"));
                                         txtSala.setText("Sala "+jsonArray.getJSONObject(i).getString("id_sala"));
                                         txtAsientos.setText("Número de asientos: "+jsonArray.getJSONObject(i).getString("asientos"));
-                                        txtDuracion.setText("Duración: "+jsonArray.getJSONObject(i).getString("duracion"));
+                                        txtDuracion.setText("Duración: "+jsonArray.getJSONObject(i).getString("duracion")+" minutos");
 
                                         String url="Película - "+jsonArray.getJSONObject(i).getString("nombre")+"\nFunción: "+jsonArray.getJSONObject(i).getString("horario")+"\nSala "+jsonArray.getJSONObject(i).getInt("id_sala")+"\nAsientos: "+jsonArray.getJSONObject(i).getInt("asientos");
 
