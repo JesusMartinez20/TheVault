@@ -56,19 +56,17 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
         eliminar = (Button) findViewById(R.id.btnAdminPremioEliminar);
 
         accionRecibida = (int) getIntent().getIntExtra("accion", 0);
+        peliculaID = (int) getIntent().getIntExtra("peliculaID", 0);
 
         if (accionRecibida == 0) {
             eliminar.setVisibility(View.GONE);
+            premioID = 0;
+
         } else {
             accionTitulo.setText(R.string.modificarPremio);
             accion.setText(R.string.modificarPremio);
-        }
-
-        if (getIntent().hasExtra("premioID")) {
-            rellenarCampos();
             premioID = (int) getIntent().getIntExtra("premioID", 0);
-        } else {
-            premioID = 0;
+            putInfo();
         }
 
         fecha.setOnClickListener(new View.OnClickListener(){
@@ -86,7 +84,7 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
         });
     }
 
-    private void rellenarCampos() {
+    private void putInfo() {
         AsyncHttpClient client = new AsyncHttpClient();
 
         client.get(BEConection.URL + "consultarPremio.php?id=" + premioID,
@@ -96,13 +94,17 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
                         if (statusCode == 200) {
                             try {
                                 String x = new String(responseBody);
-
                                 if (!x.equals("0")) {
                                     JSONObject premio = new JSONObject(new String(responseBody));
+
+                                    //Se establecen los vaores de la imagen y de los textview en la vista pricipal
                                     categoria.setText(premio.getString("categoria"));
                                     lugar.setText(premio.getString("lugar"));
                                     academia.setText(premio.getString("academia"));
                                     fecha.setText(premio.getString("fecha"));
+
+                                } else {
+                                    Toast.makeText(AdministradorPremiosActivity.this, "Película no encontrada", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 Toast.makeText(AdministradorPremiosActivity.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -112,10 +114,9 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(AdministradorPremiosActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
-                }
-        );
+                });
     }
 
     private void ejecutarWebService(String url, final String msg, int method) {
@@ -126,6 +127,7 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
             jsonBody.put("lugar", lugar.getText().toString());
             jsonBody.put("academia", academia.getText().toString());
             jsonBody.put("id", premioID);
+            jsonBody.put("fecha", fecha.getText().toString());
             if (getIntent().hasExtra("peliculaID")) {
                 jsonBody.put("id_pelicula", getIntent().getIntExtra("peliculaID", 0));
             }
@@ -193,7 +195,7 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
         myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ejecutarWebService(BEConection.URL + "eliminarPremio.php?id=" + premioID , "Película eliminada", Request.Method.GET);
+                ejecutarWebService(BEConection.URL + "eliminarPremio.php?id=" + premioID , "Premio eliminado", Request.Method.GET);
             }
         });
 
