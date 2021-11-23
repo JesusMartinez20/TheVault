@@ -149,17 +149,19 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/circle_button"
                 android:gravity="center"
-                android:textColor="@color/primario_texto"
-                android:text="@string/agregarStaff" />
+                android:onClick="accionStaff"
+                android:text="@string/agregarStaff"
+                android:textColor="@color/primario_texto" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnAdminStaffEliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/circle_button"
                 android:gravity="center"
+                android:onClick="eliminarStaff"
                 android:text="@string/eliminarStaff"
                 android:textColor="@color/primario_texto" />
 
