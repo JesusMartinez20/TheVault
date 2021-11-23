@@ -105,5 +105,6 @@ public class StaffListaActivity extends AppCompatActivity {
         Intent intent = new Intent(StaffListaActivity.this, AdministradorStaffActivity.class);
         intent.putExtra("peliculaID", peliculaID);
         intent.putExtra("accion",0);
+        startActivity(intent);
     }
 }

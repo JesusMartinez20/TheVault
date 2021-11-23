@@ -75,6 +75,7 @@ public class PremiosListaActivity extends AppCompatActivity {
                                                 Intent intent = new Intent(PremiosListaActivity.this, AdministradorPremiosActivity.class);
                                                 try {
                                                     intent.putExtra("premioID", currentAward.getInt("id"));
+                                                    intent.putExtra("peliculaID", peliculaID);
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
@@ -106,5 +107,6 @@ public class PremiosListaActivity extends AppCompatActivity {
         Intent intent = new Intent(PremiosListaActivity.this, AdministradorPremiosActivity.class);
         intent.putExtra("peliculaID", peliculaID);
         intent.putExtra("accion",0);
+        startActivity(intent);
     }
 }
