@@ -3,8 +3,10 @@ package com.example.thevault;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class PeliculaActivity extends AppCompatActivity {
     private TextView name, director, length, premiere, country, score, awards;
     private ImageView image;
     private LinearLayout layoutComments, layoutStaff;
+    private Button modificar;
     private int movieID;
 
     @Override
@@ -41,10 +44,18 @@ public class PeliculaActivity extends AppCompatActivity {
         country = (TextView) findViewById(R.id.txtMovieCountry);
         score = (TextView) findViewById(R.id.txtMovieScore);
 
+        modificar = (Button) findViewById(R.id.btnAdminEditar);
+
         layoutComments = (LinearLayout) findViewById(R.id.layoutMovieComments);
         layoutStaff = (LinearLayout) findViewById(R.id.layoutMovieStaff);
 
         movieID = (int) getIntent().getIntExtra("peliculaID", 0);
+
+        SharedPreferences preferencias = getSharedPreferences("user.dat", MODE_PRIVATE);
+
+        if(!preferencias.getBoolean("admin", false)){
+            modificar.setVisibility(View.GONE);
+        }
 
         putInfo();
         getComments();
@@ -173,6 +184,13 @@ public class PeliculaActivity extends AppCompatActivity {
 
     public void goToCommentView(View view) {
         Intent intent = new Intent(PeliculaActivity.this, AgregarComentarioActivity.class);
+        intent.putExtra("peliculaID", movieID);
+        startActivity(intent);
+    }
+
+    public void adminEditarPelicula(View view) {
+        Intent intent = new Intent(PeliculaActivity.this, AdministradorPeliculaActivity.class);
+        intent.putExtra("accion", 1);
         intent.putExtra("peliculaID", movieID);
         startActivity(intent);
     }
