@@ -115,10 +115,10 @@
                 android:layout_marginRight="40dp"
                 android:background="@drawable/circle_edittext"
                 android:ems="10"
+                android:hint="@string/imagen"
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/imagen"
                 android:textColor="@color/primario_texto"
                 android:textColorHint="@color/primario_texto" />
 
@@ -183,6 +183,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/circle_button"
                 android:gravity="center"
+                android:onClick="eliminarPelicula"
                 android:text="@string/eliminarPelicula"
                 android:textColor="@color/primario_texto" />
 

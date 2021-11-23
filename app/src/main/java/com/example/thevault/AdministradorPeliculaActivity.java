@@ -21,11 +21,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,20 +65,22 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
 
         if (accionRecibida == 0) {
             eliminar.setVisibility(View.GONE);
+            staff.setEnabled(false);
+            premios.setEnabled(false);
         } else {
             accionTitulo.setText(R.string.modificarPelicula);
             accion.setText(R.string.modificarPelicula);;
             staff.setText(R.string.modificarStaff);
             premios.setText(R.string.modificarPremio);
-        }
 
-        if(getIntent().hasExtra("peliculaID")) {
-            rellenarCampos();
-            peliculaID = (int) getIntent().getIntExtra("peliculaID", 0);
+            if(getIntent().hasExtra("peliculaID")) {
+                peliculaID = (int) getIntent().getIntExtra("peliculaID", 0);
+                putInfo();
+            }
         }
     }
 
-    private void rellenarCampos() {
+    private void putInfo() {
         AsyncHttpClient client = new AsyncHttpClient();
 
         client.get(BEConection.URL + "consultarPelicula.php?id=" + peliculaID,
@@ -86,17 +91,19 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
                             try {
                                 String x = new String(responseBody);
                                 if (!x.equals("0")) {
-                                    JSONObject pelicula = new JSONObject(new String(responseBody));
+                                    JSONObject movie = new JSONObject(new String(responseBody));
 
-                                    titulo.setText(pelicula.getString("nombre"));
-                                    duracion.setText(pelicula.get("duracion") + "min");
-                                    estreno.setText(pelicula.getString("fecha"));
-                                    origen.setText(pelicula.getString("pais"));
-                                    imagen.setText(pelicula.getString("imagen"));
+                                    //Se establecen los vaores de la imagen y de los textview en la vista pricipal
+                                    titulo.setText(movie.getString("nombre"));
+                                    duracion.setText(movie.getString("duracion"));
+                                    estreno.setText(movie.getString("fecha"));
+                                    origen.setText(movie.getString("pais"));
+                                    imagen.setText(movie.getString("imagen"));
 
-                                    if (pelicula.getInt("en_proyeccion") == 1) {
-                                        proyeccion.setChecked(true);
-                                    }
+                                    proyeccion.setChecked((movie.getInt("en_proyeccion") == 1));
+
+                                } else {
+                                    Toast.makeText(AdministradorPeliculaActivity.this, "Película no encontrada", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 Toast.makeText(AdministradorPeliculaActivity.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -106,7 +113,37 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Toast.makeText(AdministradorPeliculaActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 
+    private void funcionTontaParaObtenerElIdDeLaPeliculaInsertadaPorqueNoSeUsarJSONObjectRequest() {
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(BEConection.URL + "getLastMovieId.php",
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        if (statusCode == 200) {
+                            try {
+                                String x = new String(responseBody);
+                                if (!x.equals("0")) {
+                                    JSONObject pelicula = new JSONObject(new String(responseBody));
+
+                                    peliculaID = pelicula.getInt("id");
+                                    staff.setEnabled(true);
+                                    premios.setEnabled(true);
+                                }
+                            } catch (JSONException e) {
+                                Toast.makeText(AdministradorPeliculaActivity.this, "Error al obtener información: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Toast.makeText(AdministradorPeliculaActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -130,6 +167,7 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     Toast.makeText(AdministradorPeliculaActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    funcionTontaParaObtenerElIdDeLaPeliculaInsertadaPorqueNoSeUsarJSONObjectRequest();
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -174,6 +212,7 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
             ejecutarWebService(BEConection.URL+ "insertarPelicula.php",
                     "Pelicula agregada", Request.Method.POST);
             limpiarCampos();
+
         } else {
             ejecutarWebService(BEConection.URL+ "actualizarPelicula.php",
                     "Pelicula actualizada", Request.Method.PUT);
@@ -203,14 +242,18 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
     }
 
     public void irAStaff(View view) {
-        Intent staff = new Intent(this, AdministradorStaffActivity.class);
+        Intent staff = new Intent(this,
+                (accionRecibida == 0 ? AdministradorStaffActivity.class : StaffListaActivity.class));
+
         staff.putExtra("accion", accionRecibida); //0 para agregar staff, 1 para ir a lista.
         staff.putExtra("peliculaID", peliculaID);
         startActivity(staff);
     }
 
     public void irAPremios(View view) {
-        Intent staff = new Intent(this, AdministradorPremiosActivity.class);
+        Intent staff = new Intent(this,
+                (accionRecibida == 0 ? AdministradorPremiosActivity.class : PremiosListaActivity.class));
+
         staff.putExtra("accion", accionRecibida); //0 para agregar staff, 1 para ir a lista.
         staff.putExtra("peliculaID", peliculaID);
         startActivity(staff);
