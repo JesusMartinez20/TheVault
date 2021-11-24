@@ -217,6 +217,7 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
             ejecutarWebService(BEConection.URL+ "actualizarPelicula.php",
                     "Pelicula actualizada", Request.Method.PUT);
         }
+        irAFeed();
     }
 
     public void eliminarPelicula(View view) {
@@ -227,6 +228,7 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ejecutarWebService(BEConection.URL + "eliminarPelicula.php?id=" + peliculaID , "Película eliminada", Request.Method.GET);
+                irAFeed();
             }
         });
 
@@ -266,5 +268,11 @@ public class AdministradorPeliculaActivity extends AppCompatActivity {
         origen.setText("");
         imagen.setText("");
         proyeccion.setChecked(false);
+    }
+
+    private void irAFeed(){
+        Intent staff = new Intent(this, Feed2.class);
+        startActivity(staff);
+        finish();
     }
 }

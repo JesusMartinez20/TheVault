@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -186,6 +187,7 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
             ejecutarWebService(BEConection.URL+ "actualizarPremio.php",
                     "Premio actualizado", Request.Method.PUT);
         }
+        irAFeed();
     }
 
     public void eliminarPremio(View view) {
@@ -196,6 +198,7 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ejecutarWebService(BEConection.URL + "eliminarPremio.php?id=" + premioID , "Premio eliminado", Request.Method.GET);
+                irAFeed();
             }
         });
 
@@ -215,5 +218,11 @@ public class AdministradorPremiosActivity extends AppCompatActivity {
         lugar.setText("");
         academia.setText("");
         fecha.setText("");
+    }
+
+    private void irAFeed(){
+        Intent staff = new Intent(this, Feed2.class);
+        startActivity(staff);
+        finish();
     }
 }

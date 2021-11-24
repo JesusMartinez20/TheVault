@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -225,6 +226,7 @@ public class AdministradorStaffActivity extends AppCompatActivity {
             ejecutarWebService(BEConection.URL+ "actualizarStaff.php",
                     "Staff actualizado", Request.Method.PUT);
         }
+        irAFeed();
     }
 
     public void eliminarStaff(View view) {
@@ -235,6 +237,7 @@ public class AdministradorStaffActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ejecutarWebService(BEConection.URL + "eliminarStaff.php?id=" + participacionID , "Staff eliminada", Request.Method.GET);
+                irAFeed();
             }
         });
 
@@ -254,5 +257,11 @@ public class AdministradorStaffActivity extends AppCompatActivity {
         nacionalidad.setText("");;
         imagen.setText("");;
         fecha.setText("");;
+    }
+
+    private void irAFeed(){
+        Intent staff = new Intent(this, Feed2.class);
+        startActivity(staff);
+        finish();
     }
 }
